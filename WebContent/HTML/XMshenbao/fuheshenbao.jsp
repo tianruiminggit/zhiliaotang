@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -18,6 +19,7 @@
 </head>
 
 <body>
+	<h1 align="center">复核项目申报</h1>
 	<div class="easyui-layout" style="width: 100%; height: 350px;">
 		<div data-options="region:'north'" style="height: 50px">
 			<div style="line-height: 50px;">

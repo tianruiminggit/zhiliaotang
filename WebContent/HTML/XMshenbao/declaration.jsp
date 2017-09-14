@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+	<h1 align="center">项目申报表</h1>
 	<div class="easyui-panel" title="项目申报填写表" style="width: 100%">
 		<div style="padding: 10px 60px 20px 60px">
 			<form method="post">
