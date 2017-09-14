@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class table_25 {
+public class Table_25 {
 	private String child_id;
 	private String tbname;
 

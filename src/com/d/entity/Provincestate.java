@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_provincestate {
+public class Provincestate {
 	private	int	province_state	;
 	private	String	state	;
 

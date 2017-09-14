@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_originaldata {
+public class Originaldata {
 	private	String	declar_id	;
 	private	String	declar_province	;
 	private	String	declar_city	;

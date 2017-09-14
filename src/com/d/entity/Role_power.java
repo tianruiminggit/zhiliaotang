@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_role_power {
+public class Role_power {
 	private	String	role_id	;
 	private	String	power_id	;
 

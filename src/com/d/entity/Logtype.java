@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_logtype {
+public class Logtype {
 	private	int	log_type	;
 	private	String	log_typename	;
 

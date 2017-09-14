@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_projectkind {
+public class Projectkind {
 	private	String	kind_id	;
 	private	String	kind_name	;
 

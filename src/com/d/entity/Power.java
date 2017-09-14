@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_power {
+public class Power {
 	private	String	power_id	;
 	private	String	power_name	;
 	private	String	power_url	;

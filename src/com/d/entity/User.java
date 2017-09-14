@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_user {
+public class User {
 	private	String	user_id	;
 	private	String	user_name	;
 	private	String	user_password	;

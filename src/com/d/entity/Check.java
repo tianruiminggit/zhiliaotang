@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_check {
+public class Check {
 	private	String	declar_id	;
 	private	String	xiangmu_pifuwenhao	;
 	private	String	project_content	;

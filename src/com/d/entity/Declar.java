@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_copydata {
+public class Declar {
 	private	String	declar_id	;
 	private	String	declar_province	;
 	private	String	declar_city	;
@@ -17,5 +17,7 @@ public class tb_copydata {
 	private	int	province_state	;
 	private	int	city_state	;
 	private	int	county_state	;
+	private	String	child_id	;
+
 
 }

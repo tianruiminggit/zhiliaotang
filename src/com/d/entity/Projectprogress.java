@@ -1,6 +1,6 @@
-package Entity;
+package com.d.entity;
 
-public class tb_projectprogress {
+public class Projectprogress {
 	private	String	declar_id	;
 	private	int	moey_state	;
 	private	int	project_state	;
