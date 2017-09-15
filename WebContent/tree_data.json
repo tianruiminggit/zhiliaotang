@@ -38,10 +38,12 @@
 		}]
 	},{
 		"id":13,
-		"text":"index.html"
+		"url":"HTML/XMshenbao/daituijian.jsp",
+		"text":"待推荐项目"
 	},{
 		"id":14,
-		"text":"about.html"
+		"url":"HTML/XMshenbao/declaration.jsp",
+		"text":"项目申报"
 	},{
 		"id":15,
 		"text":"welcome.html",
