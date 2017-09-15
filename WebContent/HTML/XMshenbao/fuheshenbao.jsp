@@ -37,6 +37,7 @@
 				data-options="url:'testjson.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true,pagination:true">
 				<thead>
 					<tr>
+						<th data-options="field:'id'" hidden="true"></th>
 						<th data-options="field:'region'" width="10%">地区</th>
 						<th data-options="field:'单位名称'" width="10%">单位名称</th>
 						<th data-options="field:'project_name',align:'right'" width="30%">项目名称</th>

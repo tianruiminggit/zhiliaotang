@@ -34,6 +34,7 @@
 				<table class="easyui-datagrid" data-options="url:'testjson.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true">
 					<thead>
 						<tr>
+							<th data-options="field:'id'" hidden="true"></th>
 							<th data-options="field:'region'" width="80">地区</th>
 							<th data-options="field:'project_name',align:'right'" width="80">项目名称</th>
 							<th data-options="field:'buzhuzj',align:'right'" width="80">补助资金</th>
