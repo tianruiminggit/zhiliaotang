@@ -23,7 +23,7 @@
 	<div class="easyui-panel" title="项目申报填写表" style="width: 100%">
 		<div style="padding: 10px 60px 20px 60px">
 			<form method="post">
-				<table cellpadding="5" style="margin: 0 auto">
+				<table cellpadding="5" style="margin: 0 auto" border="2">
 					<tr>
 						<td>选择地区:</td>
 						<td><select class="easyui-combobox" name="province">
