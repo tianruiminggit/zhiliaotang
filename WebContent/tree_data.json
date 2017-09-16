@@ -16,38 +16,92 @@
 			"text":"Company"
 		}]
 	},{
-		"id":12,
-		"text":"Program Files",
+		"id":14,		
+		"text":"项目申报",
 		"children":[{
-			"id":121,
-			"text":"Intel"
+			"id":141,
+			"text":"填制项目卡",
+			"url":"HTML/XMshenbao/declaration.jsp"		
+			},{
+			"id":142,
+			"text":"待推荐项目",
+			"url":"HTML/XMshenbao/daituijian.jsp"
+			},{
+			"id":143,
+			"text":"复合上报项目",
+			"url":""
+			},{
+			"id":144,
+			"text":"项目申报汇总表",
+			"url":""
+			},{
+			"id":145,
+			"text":"原始申报数据",
+			"url":""
+			},{
+			"id":146,
+			"text":"接收数据备份",
+			"url":""
+			}]
+	},{
+	"id":2,
+	"text":"项目审批",
+	"state":"closed",
+	"children":[{
+		"id":21,
+		"text":"未审批项目",
+		"state":"closed",
+		"children":[{
+			"id":211,
+			"text":"审核修改",
+			"url":""
+			},{
+			"id":212,
+			"text":"未审批项目汇总表",
+			"url":""
+			}]
 		},{
-			"id":122,
-			"text":"Java",
-			"attributes":{
-				"p1":"Custom Attribute1",
-				"p2":"Custom Attribute2"
-			}
-		},{
-			"id":123,
-			"text":"Microsoft Office"
-		},{
-			"id":124,
-			"text":"Games",
-			"checked":true
+		"id":22,
+		"text":"已审批项目"
 		}]
-	},{
-		"id":13,
-		"url":"HTML/XMshenbao/daituijian.jsp",
-		"text":"待推荐项目"
-	},{
-		"id":14,
-		"url":"HTML/XMshenbao/declaration.jsp",
-		"text":"项目申报"
+	
 	},{
 		"id":15,
 		"text":"welcome.html",
 		"url":"test1.jsp",
 		"iconCls":"icon-ok"
+	},{
+		"id":16,
+		"text":"密码设置",
+		"checked":true
+	},{
+	"id":17,
+	"text":"系统管理",
+	"checked":true,
+	"children":[{
+		"id":171,
+		"text":"单位设置",
+		"url":"HTML/XTguanli/unitsSetup.jsp"
+		},{
+		"id":173,
+		"text":"类别设置",
+		"url":"HTML/XTguanli/leibieshezhi.jsp"
+		},{
+		"id":174,
+		"text":"用户管理及权限设置",
+		"url":"HTML/XTguanli/userpower.jsp"		
+		},{
+		"id":175,
+		"text":"权限设置",
+		"url":""
+		},{
+		"id":176,
+		"text":"系统日志",
+		"url":"HTML/XTguanli/xitongrizhi.jsp"
+		},{
+		"id":177,
+		"text":"登录日志",
+		"url":"HTML/XTguanli/xitongdenglurizhi.jsp"
+		}]	
 	}]
 }]
