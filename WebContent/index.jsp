@@ -35,7 +35,7 @@
 				if(node.url == null){
 					console.log("dasd");
 				}else
-					addTab("test1",node.url);
+					addTab(node.text,node.url);
 			}
 		});
 		function addTab(title, url) {

@@ -7,14 +7,15 @@
 <meta charset="UTF-8">
 <title></title>
 <link rel="stylesheet" type="text/css"
-	href="jquery-easyui-1.5.3/themes/default/easyui.css">
+	href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="jquery-easyui-1.5.3/themes/icon.css">
+	href="../../jquery-easyui-1.5.3/themes/icon.css">
 <link rel="stylesheet" type="text/css"
-	href="jquery-easyui-1.5.3/demo/demo.css">
-<script type="text/javascript" src="jquery-easyui-1.5.3/jquery.min.js"></script>
+	href="../../jquery-easyui-1.5.3/demo/demo.css">
 <script type="text/javascript"
-	src="jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
 	<div class="easyui-panel" title="项目申报填写表" style="width: 100%">
 		<div style="padding: 10px 60px 20px 60px">
 			<form method="post">
-				<table cellpadding="5" style="margin: 0 auto">
+				<table cellpadding="5" style="margin: 0 auto" border="2">
 					<tr>
 						<td>选择地区:</td>
 						<td><select class="easyui-combobox" name="province">
