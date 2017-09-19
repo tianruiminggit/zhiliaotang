@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.d.dao.AuthUserDao"><!-- 后面接的是接口名称 -->
+<!--id名要与实体类中的接口对象名一致  -->
+	<select id="getAuthUser" resultType="com.d.entity.AuthUser">
+		select*from tb_user
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
