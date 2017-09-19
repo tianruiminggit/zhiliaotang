@@ -5,6 +5,7 @@
 	<select id="getAuthUser" resultType="com.d.entity.AuthUser">
 		select*from tb_user
 	</select>
+
 </mapper>
 
 
