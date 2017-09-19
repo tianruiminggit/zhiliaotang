@@ -29,19 +29,19 @@
 			},{
 			"id":143,
 			"text":"复合上报项目",
-			"url":""
+			"url":"HTML/XMshenbao/fuheshenbao.jsp"
 			},{
 			"id":144,
 			"text":"项目申报汇总表",
-			"url":""
+			"url":"HTML/XMshenbao/declaration.jsp"
 			},{
 			"id":145,
 			"text":"原始申报数据",
-			"url":""
+			"url":"HTML/XMshenbao/yuanshishuju.jsp"
 			},{
 			"id":146,
 			"text":"接收数据备份",
-			"url":""
+			"url":"HTML/XMshenbao/shujubeifen.jsp"
 			}]
 	},{
 	"id":2,

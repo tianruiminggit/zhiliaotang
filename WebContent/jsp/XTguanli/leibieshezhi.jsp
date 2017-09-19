@@ -97,15 +97,22 @@
 												<option value="ru">Russian</option>												
 											</select>
 										</td>
+										<td>
+											<select class="easyui-combobox" name="language2">
+												<option value="ar">Arabic</option>
+												<option value="bg">Bulgarian</option>		
+												<option value="ru">Russian</option>												
+											</select>
+										</td>
 									</tr>
-									<tr>
+								<!-- 	<tr>
 										<td>添加位置:</td>
 										<td><input class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
 										</td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td>显示顺序:</td>
-										<td><input class="easyui-textbox" type="text" name="email" data-options="required:true,validType:'email'"></input>
+										<td><input class="easyui-textbox" type="text" name="email" value="可不填" data-options="required:true,validType:'email'"></input>
 										</td>
 									</tr>
 									<tr>
