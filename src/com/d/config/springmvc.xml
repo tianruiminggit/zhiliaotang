@@ -12,6 +12,8 @@
 	   		http://www.springframework.org/schema/mvc/spring-mvc.xsd ">	
 		<!-- 配置将要扫描的包（控制器包） -->
 		<context:component-scan base-package="com.d.controller"></context:component-scan>	
+		<mvc:annotation-driven>
+		</mvc:annotation-driven>
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"></bean>
 		<!-- 以上代码prifix设置的是前缀，suffix设置的是后缀 -->

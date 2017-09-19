@@ -81,7 +81,7 @@
 	"children":[{
 		"id":171,
 		"text":"单位设置",
-		"url":"HTML/XTguanli/unitsSetup.jsp"
+		"url":"jsp/XTguanli/unitsSetup.jsp"
 		},{
 		"id":173,
 		"text":"类别设置",

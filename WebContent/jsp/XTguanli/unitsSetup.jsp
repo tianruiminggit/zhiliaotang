@@ -1,25 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<!--引入easy UI框架    -->
-	
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/icon.css">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/demo.css">
-		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
-		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
-		
-	
-	
-	</head>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<!--引入easy UI框架    -->
 
-	<body>
+<link rel="stylesheet" type="text/css"
+	href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="../../jquery-easyui-1.5.3/themes/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="../../jquery-easyui-1.5.3/demo.css">
+<script type="text/javascript"
+	src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+
+
+
+</head>
+
+<body onload="myhide()">
 		<h2>单位设置页面</h2>
 
 		<div style="margin:20px 0;"></div>
@@ -80,49 +85,50 @@
 
 					
 						<div style="padding:10px 60px 20px 60px">
-							<form id="ff" method="post">
+							<form id="ff" method="post" ac>
 								<table cellpadding="5">
 									<tr>
-										<td>添加位置:</td>
+										<td>添加类别:</td>
 										<td>
-											<select class="easyui-combobox" name="language">
-												<option value="ar">Arabic</option>
-												<option value="bg">Bulgarian</option>		
-												<option value="ru">Russian</option>												
+											<select id="type" name="table" onchange="choseType()">
+												<option value="pp">请选择..</option>
+												<option value="province">省 </option>
+												<option value="city">市 </option>		
+												<option value="county">县 </option>												
 											</select>
 										</td>
 									</tr>
-									<tr>
-										<td>添加位置:</td>
-										<td><input class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
+									<tr id="province">
+										<td>省名:</td>
+										<td><input class="easyui-textbox" type="text" name="province_name" data-options="required:true"></input>
 										</td>
 									</tr>
-									<tr>
-										<td>显示顺序:</td>
-										<td><input class="easyui-textbox" type="text" name="email" data-options="required:true,validType:'email'"></input>
+									<tr id="p_select">
+										<td>省名:</td>
+										<td>
+											<select id="province_id" name="province_id" onchange="choseCity()">
+												<option value="pp">请选择..</option>
+											</select>
 										</td>
 									</tr>
-									<tr>
-										<td>分类名称:</td>
-										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
+									<tr id="city">
+										<td>市名:</td>
+										<td><input class="easyui-textbox" type="text" name="province_name" data-options="required:true"></input>
 										</td>
 									</tr>
-									<tr>
-										<td>路径目标:</td>
-										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
+									<tr id="c_select">
+										<td>市名:</td>
+										<td>
+											<select id="city_id" name="city_id">
+												<option value="pp">请选择..</option>
+											</select>
 										</td>
 									</tr>
-									<tr>
-										<td>代码:</td>
-										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
+									<tr id="county">
+										<td>县名:</td>
+										<td><input class="easyui-textbox" type="text" name="province_name" data-options="required:true"></input>
 										</td>
 									</tr>
-									<!--<tr>
-										<td>Message:</td>
-										<td><input class="easyui-textbox" name="message" data-options="multiline:true" style="height:60px"></input>
-										</td>
-									</tr>-->
-									
 								</table>
 							</form>
 							<div style="text-align:left;padding:5px">
@@ -135,6 +141,13 @@
 					
 					
 					<script>
+						function myhide(){
+							$("#province").hide();
+							$("#p_select").hide();
+							$("#city").hide();
+							$("#c_select").hide();
+							$("#county").hide();
+						}
 						function submitForm() {
 							$('#ff').form('submit');
 						}
@@ -142,10 +155,63 @@
 						function clearForm() {
 							$('#ff').form('clear');
 						}
+						function choseType(){
+							var type = $("#type").val();
+							if("province"==type){
+								$("#province").show();
+								$("#p_select").hide();
+								$("#city").hide();
+								$("#c_select").hide();
+								$("#county").hide();
+							}
+							if("city"==type){
+								$("#province").hide();
+								$("#p_select").show();
+								$("#city").show();
+								$("#c_select").hide();
+								$("#county").hide();
+								choseProvince()
+							}
+							if("county"==type){
+								$("#province").hide();
+								$("#p_select").show();
+								$("#city").hide();
+								$("#c_select").show();
+								$("#county").show();
+								choseProvince()
+							}
+							if("pp"==type||type==null){
+								$("#province").hide();
+								$("#p_select").hide();
+								$("#city").hide();
+								$("#c_select").hide();
+								$("#county").hide();
+							}
+						}
+						function choseProvince(){
+							$.ajax({
+								type:"get",
+								url:"../../region/getProvince.do",
+								success:function(result){
+									for(var i=0;i<result.length;i++){
+										var json = result[i];
+										$("#province_id").append("<option value='"+json.province_id+"'>"+json.province_name+" </option>")	
+									}
+								}
+							});
+						}
+						function choseCity(){
+							$.ajax({
+								type:"get",
+								url:"",
+								success:function(result){
+									$("#city_id").append("<option value='province'>阿斯達 </option>")
+								}
+							});
+						}
 					</script>
 
 				</div>
 
 	</body>
-
 </html>

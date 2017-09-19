@@ -3,6 +3,7 @@
 <configuration>
 	<mappers>
 		<mapper resource="com/d/mapper/AuthUserMapper.xml"/>
+		<mapper resource="com/d/mapper/RegionmanagerMapper.xml"/>
 	</mappers>
 
 
