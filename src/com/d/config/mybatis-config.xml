@@ -4,6 +4,8 @@
 	<mappers>
 		<mapper resource="com/d/mapper/AuthUserMapper.xml"/>
 		<mapper resource="com/d/mapper/RegionmanagerMapper.xml"/>
+		<!-- 加载类别设置的mapper配置文件 -->
+		<mapper resource="com/d/mapper/leibieshezhiMapper.xml"/>
 	</mappers>
 
 

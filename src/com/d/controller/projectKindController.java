@@ -1,9 +1,13 @@
 package com.d.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.d.Tree.TreeNode;
 import com.d.entity.Projectkind;
 import com.d.service.leibeishezhiService;
 
@@ -12,7 +16,7 @@ import com.d.service.leibeishezhiService;
 public class projectKindController {
 	/**
 	 * 
-	 * 创建类别设置service对象
+	 * 创建类别设置的service对象
 	 * 
 	 */
 	@Autowired
@@ -22,9 +26,11 @@ public class projectKindController {
 	 * @return
 	 */
 	@RequestMapping("/getProjectKidJson")
-	public Projectkind getlistProjectKid(){
-		Projectkind projectkind = new Projectkind();
-		return projectkind;
+	@ResponseBody
+	public List<TreeNode> getlistProjectKid(){
+		List<TreeNode> list = leibeishezhi.getlistProjectkind();
+		
+		return list;
 	}
 	
 }

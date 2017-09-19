@@ -16,13 +16,14 @@
 		
 	</head>
 
-	<body>
+	<body onload="doAjax()">
 		<h2>单位设置页面</h2>
 
 		<div style="margin:20px 0;"></div>
 		<div class="easyui-layout" style="width:1500px;height:700px;">
+			<ul id="mytree"></ul>
 			<!--左框架 -->
-			<div data-options="region:'west',split:true" title="West" style="width:200px;height: 700px;">
+			<!-- <div data-options="region:'west',split:true" title="West" style="width:200px;height: 700px;">
 				左边导航栏
 				<div class="easyui-panel" style="padding:5px;height: 700px;">
 					<ul class="easyui-tree">
@@ -68,7 +69,7 @@
 							</ul>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 
 			</div>
 <!--右边内容-->
@@ -154,6 +155,20 @@
 
 						function clearForm() {
 							$('#ff').form('clear');
+						}
+						
+						function doAjax(){
+							console.log("doajax")
+							$.ajax({
+								type:"get",
+								url:"../../projectKindController/getProjectKidJson.do",
+								success:function(result){
+									console.log("result"+result)
+									$("#mytree").tree({
+										url:"result"
+									})
+								}
+							});
 						}
 					</script>
 

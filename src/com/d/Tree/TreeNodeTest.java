@@ -44,11 +44,9 @@ public class TreeNodeTest {
 			if(treenode.getPid()==null){//判断是否是跟节点，没有父节点
 				treenode.setState("open");
 				treenode.setChildren(getChildrenTreeNode(treenode.getId(), treeDataList));//设置子节点，找该父节点下右哪些子节点，确立好他们之间的关系
-				newTreeDataList.add(treenode);
-				
+				newTreeDataList.add(treenode);				
 			}
-		}
-		
+		}	
 		return newTreeDataList;
 	}
 	/**
@@ -65,8 +63,7 @@ public class TreeNodeTest {
 				newTreeDataList.add(treeNode);
 			}
 			
-		}
-		
+		}	
 		return newTreeDataList;
 	}
 }
