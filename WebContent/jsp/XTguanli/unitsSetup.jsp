@@ -28,11 +28,11 @@
 		<h2>单位设置页面</h2>
 
 		<div style="margin:20px 0;"></div>
-		<div class="easyui-layout" style="width:1500px;height:700px;">
+		<div class="easyui-layout" style="width:100%;height:700px;">
 			<!--左框架 -->
-			<div data-options="region:'west',split:true" title="West" style="width:200px;height: 700px;">
-				左边导航栏
-				<div class="easyui-panel" style="padding:5px;height: 700px;">
+			<div data-options="region:'west',split:true" title="West" style="width:20%;height: 700px;">
+			<ul id="tree_nav"></ul>
+<!-- 				<div class="easyui-panel" style="padding:5px;height: 700px;">
 					<ul class="easyui-tree">
 						<li>
 							<span>四川省</span>
@@ -51,7 +51,7 @@
 										</li>
 									</ul>
 								</li>
-								<!--攀枝花市-->
+								攀枝花市
 								<li>
 									<span>攀枝花市</span>
 									<ul>
@@ -67,7 +67,7 @@
 							</ul>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 
 			</div>
 <!--右边内容-->
@@ -85,16 +85,16 @@
 
 					
 						<div style="padding:10px 60px 20px 60px">
-							<form id="ff" method="post" ac>
+							<form id="ff" method="get" action="../../region/insertRegion.do" >
 								<table cellpadding="5">
 									<tr>
 										<td>添加类别:</td>
 										<td>
 											<select id="type" name="table" onchange="choseType()">
-												<option value="pp">请选择..</option>
-												<option value="province">省 </option>
-												<option value="city">市 </option>		
-												<option value="county">县 </option>												
+												<option value="">请选择..</option>
+												<option value="tb_province">省 </option>
+												<option value="tb_city">市 </option>		
+												<option value="tb_county">县 </option>												
 											</select>
 										</td>
 									</tr>
@@ -107,26 +107,24 @@
 										<td>省名:</td>
 										<td>
 											<select id="province_id" name="province_id" onchange="choseCity()">
-												<option value="pp">请选择..</option>
 											</select>
 										</td>
 									</tr>
 									<tr id="city">
 										<td>市名:</td>
-										<td><input class="easyui-textbox" type="text" name="province_name" data-options="required:true"></input>
+										<td><input class="easyui-textbox" type="text" name="city_name" data-options="required:true"></input>
 										</td>
 									</tr>
 									<tr id="c_select">
 										<td>市名:</td>
 										<td>
 											<select id="city_id" name="city_id">
-												<option value="pp">请选择..</option>
 											</select>
 										</td>
 									</tr>
 									<tr id="county">
 										<td>县名:</td>
-										<td><input class="easyui-textbox" type="text" name="province_name" data-options="required:true"></input>
+										<td><input class="easyui-textbox" type="text" name="county_name" data-options="required:true"></input>
 										</td>
 									</tr>
 								</table>
@@ -149,22 +147,22 @@
 							$("#county").hide();
 						}
 						function submitForm() {
-							$('#ff').form('submit');
+							$('#ff').submit();
 						}
 
 						function clearForm() {
-							$('#ff').form('clear');
+							$('#ff').form('rest');
 						}
 						function choseType(){
 							var type = $("#type").val();
-							if("province"==type){
+							if("tb_province"==type){
 								$("#province").show();
 								$("#p_select").hide();
 								$("#city").hide();
 								$("#c_select").hide();
 								$("#county").hide();
 							}
-							if("city"==type){
+							if("tb_city"==type){
 								$("#province").hide();
 								$("#p_select").show();
 								$("#city").show();
@@ -172,7 +170,7 @@
 								$("#county").hide();
 								choseProvince()
 							}
-							if("county"==type){
+							if("tb_county"==type){
 								$("#province").hide();
 								$("#p_select").show();
 								$("#city").hide();
@@ -180,7 +178,7 @@
 								$("#county").show();
 								choseProvince()
 							}
-							if("pp"==type||type==null){
+							if(""==type||type==null){
 								$("#province").hide();
 								$("#p_select").hide();
 								$("#city").hide();
@@ -189,6 +187,8 @@
 							}
 						}
 						function choseProvince(){
+							$("#province_id").empty();
+							$("#province_id").append("<option value='pp'>请选择</option>")
 							$.ajax({
 								type:"get",
 								url:"../../region/getProvince.do",
@@ -201,11 +201,16 @@
 							});
 						}
 						function choseCity(){
+							$("#city_id").empty();
+							$("#city_id").append("<option value='pp'>请选择</option>")
 							$.ajax({
 								type:"get",
-								url:"",
+								url:"../../region/getCity.do?province_id="+$("#province_id").val(),
 								success:function(result){
-									$("#city_id").append("<option value='province'>阿斯達 </option>")
+									for(var i=0;i<result.length;i++){
+										var json = result[i];
+										$("#city_id").append("<option value='"+json.city_id+"'>"+json.city_name+" </option>")	
+									}
 								}
 							});
 						}

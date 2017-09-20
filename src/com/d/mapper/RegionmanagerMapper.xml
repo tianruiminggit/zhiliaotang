@@ -2,9 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.d.dao.RegionManagerDao"><!-- 后面接的是接口名称 -->
 <!--id名要与实体类中的接口对象名一致  -->
-	<select id="getListProvince" resultType="com.d.entity.Province">
-		select * from tb_province
+	<select id="getListProvince" resultType="com.d.entity.Province" parameterType="com.d.entity.Province">
+		select * from tb_province where 1=1
+		<if test=" province_id != null ">
+		    and province_id = #{province_id}
+		</if>
 	</select>
+	<select id="getListCity" resultType="com.d.entity.City" parameterType="com.d.entity.City">
+		select * from tb_city where 1=1
+		<if test=" city_id != null ">
+		    and city_id = #{city_id}
+		</if>
+		<if test=" city_name != null ">
+		    and city_name = #{city_name}
+		</if>
+		<if test=" province_id != null ">
+		    and province_id = #{province_id}
+		</if>
+	</select>
+	<select id="getListCounty" resultType="com.d.entity.County" parameterType="com.d.entity.County">
+	    select * from tb_county where 1=1
+	    <if test=" county_id != null ">
+	        and county_id = #{county_id}
+	    </if>
+	    <if test=" city_id != null ">
+		    and city_id = #{city_id}
+		</if>
+	</select>
+	
+	<insert id="insertRegion" parameterType="java.util.HashMap">
+	    <if test="tablename =='tb_province'.toString() ">
+	       insert into tb_province (province_id,province_name) values (#{province_id},#{province_name})
+	    </if>
+	    <if test="tablename =='tb_city'.toString() ">
+	       insert into tb_city (city_id,province_id,city_name) values (#{city_id},#{province_id},#{city_name})
+	    </if>
+	    <if test="tablename =='tb_county'.toString() ">
+	       insert into tb_county (county_id,city_id,county_name) values (#{county_id},#{city_id},#{county_name})
+	    </if>
+	</insert>
 </mapper>
 
 

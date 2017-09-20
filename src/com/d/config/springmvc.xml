@@ -17,7 +17,7 @@
 		<mvc:annotation-driven>
 		</mvc:annotation-driven>
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"></bean>
+		p:prefix="/jsp/" p:suffix=".jsp"></bean>
 		<!-- 以上代码prifix设置的是前缀，suffix设置的是后缀 -->
 		
 		
