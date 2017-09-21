@@ -16,7 +16,7 @@
 	   		http://www.springframework.org/schema/tx/spring-tx.xsd
 	   		http://www.springframework.org/schema/aop
 	   		http://www.springframework.org/schema/aop/spring-aop.xsd">	
-		<!-- 扫包 -->
+		<!-- 扫dao包 -->
 		<context:component-scan base-package="com.d.dao"></context:component-scan>
 		<!-- 指定jdbc文件类路径 -->
 		<context:property-placeholder location="classpath:com/d/config/jdbc.properties"/>
@@ -52,8 +52,7 @@
 				<tx:method name="get*" read-only="true"/>
 				<tx:method name="insert*" propagation="REQUIRED"/>
 				<tx:method name="updata*" propagation="REQUIRED"/>
-				<tx:method name="delete*" propagation="REQUIRED"/>				
-			
+				<tx:method name="delete*" propagation="REQUIRED"/>							
 			</tx:attributes>
 		
 		</tx:advice>

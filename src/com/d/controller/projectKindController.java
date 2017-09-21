@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.d.Tree.TreeNode;
 import com.d.entity.Projectkind;
 import com.d.service.leibeishezhiService;
+import com.d.util.TreeNodeUtil;
+import com.google.gson.Gson;
 
 @Controller
 @RequestMapping("/projectKindController")
@@ -29,8 +31,11 @@ public class projectKindController {
 	@ResponseBody
 	public List<TreeNode> getlistProjectKid(){
 		List<TreeNode> list = leibeishezhi.getlistProjectkind();
+		List<TreeNode> newList = TreeNodeUtil.getFatherTreeNode(list);
+		Gson gson = new Gson();//Gson需要到Gson包 用于生产json数据
+		System.out.println(gson.toJson(newList));
 		
-		return list;
+		return newList;
 	}
 	
 }
