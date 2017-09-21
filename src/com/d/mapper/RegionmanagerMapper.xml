@@ -8,6 +8,7 @@
 		    and province_id = #{province_id}
 		</if>
 	</select>
+	
 	<select id="getListCity" resultType="com.d.entity.City" parameterType="com.d.entity.City">
 		select * from tb_city where 1=1
 		<if test=" city_id != null ">
@@ -20,6 +21,7 @@
 		    and province_id = #{province_id}
 		</if>
 	</select>
+	
 	<select id="getListCounty" resultType="com.d.entity.County" parameterType="com.d.entity.County">
 	    select * from tb_county where 1=1
 	    <if test=" county_id != null ">
@@ -28,6 +30,18 @@
 	    <if test=" city_id != null ">
 		    and city_id = #{city_id}
 		</if>
+	</select>
+	
+	<select id="tree" parameterType="java.util.HashMap" resultType="com.d.entity.RegionTreeNode">
+	    <if test="tablename =='tb_province'.toString() ">
+	       select province_id as id,province_name as text from tb_province
+	    </if>
+	    <if test="tablename =='tb_city'.toString() ">
+	       select city_id as id,city_name as text from tb_city where province_id = #{id}
+	    </if>
+	    <if test="tablename =='tb_county'.toString() ">
+	       select county_id as id,county_name as text from tb_county where city_id = #{id}
+	    </if>
 	</select>
 	
 	<insert id="insertRegion" parameterType="java.util.HashMap">

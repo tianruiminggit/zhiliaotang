@@ -6,6 +6,7 @@ import java.util.Map;
 import com.d.entity.City;
 import com.d.entity.County;
 import com.d.entity.Province;
+import com.d.entity.RegionTreeNode;
 
 /**
  * 
@@ -40,4 +41,5 @@ public interface RegionManagerService {
 	 * @return
 	 */
 	int insertRegion(Map<String, Object> map);
+	List<RegionTreeNode> tree(Map<String, Object> map);
 }

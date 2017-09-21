@@ -6,6 +6,7 @@ import java.util.Map;
 import com.d.entity.City;
 import com.d.entity.County;
 import com.d.entity.Province;
+import com.d.entity.RegionTreeNode;
 
 public interface RegionManagerDao {
 
@@ -30,4 +31,5 @@ public interface RegionManagerDao {
 	 */
 	public List<City> getCityByprovince(County c);
 	public int insertRegion(Map<String, Object> map);
+	public List<RegionTreeNode> tree(Map<String, Object> map);
 }

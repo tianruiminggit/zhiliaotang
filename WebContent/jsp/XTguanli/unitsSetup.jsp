@@ -133,6 +133,7 @@
 								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">添加分类</a>
 								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重写</a>
 							</div>
+							<button onclick="treeTest()">测试下</button>
 						</div>
 					
 					
@@ -145,6 +146,9 @@
 							$("#city").hide();
 							$("#c_select").hide();
 							$("#county").hide();
+							$("#tree_nav").tree({
+								url:"../../region/regionTree.do"
+							})
 						}
 						function submitForm() {
 							$('#ff').submit();
@@ -213,6 +217,16 @@
 									}
 								}
 							});
+						}
+						
+						function treeTest(){
+							$.ajax({
+								type:"get",
+								url:"../../region/regionTree.do",
+								success:function(result){
+									console.log(result);
+								}
+							})
 						}
 					</script>
 

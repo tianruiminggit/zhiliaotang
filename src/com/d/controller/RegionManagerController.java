@@ -1,5 +1,6 @@
 package com.d.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.d.entity.City;
 import com.d.entity.County;
 import com.d.entity.Province;
+import com.d.entity.RegionTreeNode;
 import com.d.service.RegionManagerService;
 
 /**
@@ -108,9 +110,29 @@ public class RegionManagerController {
 		
 	}
 	
-	public String tree(){
-		
-		return null;
+	@RequestMapping("/regionTree")
+	@ResponseBody
+	public List<RegionTreeNode> tree(String table,String id){
+		Map<String, Object> map = new HashMap<>();
+		if(table==null)
+			map.put("tablename", "tb_province");
+		else map.put("tablename", table);
+		map.put("id", id);
+		List<RegionTreeNode> list = regionService.tree(map);
+		if(table==null){
+			for(RegionTreeNode r :list){
+				r.setChildren(tree("tb_city",r.getId()));
+			}
+		}
+		if("tb_city".equals(table)){
+			for(RegionTreeNode r :list){
+				r.setChildren(tree("tb_county",r.getId()));
+			}
+		}
+		if("tb_county".equals(table)){
+			return list;
+		}
+		return list;
 		
 	}
 }
