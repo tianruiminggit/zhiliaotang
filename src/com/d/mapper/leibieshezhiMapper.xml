@@ -8,12 +8,12 @@ WHERE
 	</select>
 	
 	<!-- 查询主类别（父节点） -->
-	<select id="" resultType="com.d.entity.Projectkind">
+	<select id="s" resultType="com.d.entity.Projectkind">
 		SELECT * FROM tb_projectkind		
 	</select>
 		
 		<!-- 查询子类别（子节点） -->
-	<select id="" resultType="com.d.entity.Kindchild">		
+	<select id="d" resultType="com.d.entity.Kindchild">		
 		SELECT * FROM tb_kindchild	
 	</select>
 	
