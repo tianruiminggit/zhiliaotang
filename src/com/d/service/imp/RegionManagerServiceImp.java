@@ -27,8 +27,8 @@ public class RegionManagerServiceImp implements RegionManagerService {
 		return regionDao.getListCity(c);
 	}
 	@Override
-	public List<City> getCityByProvince(County c) {
-		return regionDao.getCityByprovince(c);
+	public List<City> getListCounty(County c) {
+		return regionDao.getListCounty(c);
 	}
 	@Override
 	public int insertRegion(Map<String, Object> map) {

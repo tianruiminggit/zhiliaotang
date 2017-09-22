@@ -55,6 +55,38 @@
 	       insert into tb_county (county_id,city_id,county_name) values (#{county_id},#{city_id},#{county_name})
 	    </if>
 	</insert>
+	
+	<update id="updateRegion" parameterType="java.util.HashMap">
+	    <if test="tablename =='tb_province'.toString() ">
+	       update tb_province 
+	       <set>
+	           <if test="province_name != null ">
+	               province_name = #{province_name},
+	           </if>
+	       </set>
+	       where province_id =#{province_id}
+	    </if>
+	    
+	    <if test="tablename =='tb_city'.toString() ">
+	        update tb_city 
+	       <set>
+	           <if test=" city_name != null ">
+	               city_name = #{city_name},
+	           </if>
+	       </set>
+	       where city_id =#{city_id}
+	    </if>
+	    
+	    <if test="tablename =='tb_county'.toString() ">
+	       update tb_county 
+	       <set>
+	           <if test="county_name != null ">
+	               county_name = #{county_name},
+	           </if>
+	       </set>
+	       where county_id =#{county_id}
+	    </if>
+	</update>
 </mapper>
 
 
