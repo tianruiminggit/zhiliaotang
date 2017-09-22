@@ -9,9 +9,11 @@ import com.d.dao.AuthUserDao;
 import com.d.entity.AuthUser;
 import com.d.service.AuthUserService;
 /*加入service注解*/
+
 @Service
 public class AuthUserServiceImpl implements AuthUserService {
 	/*dao层接口中的抽象类*/
+
 	@Autowired
 	private AuthUserDao authUserDao;
 	
