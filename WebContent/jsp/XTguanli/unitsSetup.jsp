@@ -140,7 +140,7 @@
 					
 					
 					<script>
-						function myhide(){
+						/* function myhide(){
 							$("#province").hide();
 							$("#p_select").hide();
 							$("#city").hide();
@@ -149,7 +149,7 @@
 							$("#tree_nav").tree({
 								url:"../../region/regionTree.do"
 							})
-						}
+						} */
 						function submitForm() {
 							$('#ff').submit();
 						}

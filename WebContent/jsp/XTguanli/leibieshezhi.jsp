@@ -39,15 +39,14 @@
 
 					
 						<div style="padding:10px 60px 20px 60px">
-							<form id="ff" method="post">
+							<form id="ff" method="post" action="../../projectKindController/">
 								<table cellpadding="5">
 									<tr>
 										<td>添加位置:</td>
 										<td>
 											<select class="easyui-combobox" name="language">
-												<option value="ar">Arabic</option>
-												<option value="bg">Bulgarian</option>		
-												<option value="ru">Russian</option>												
+												<option value="ar">林牧业</option>
+												<option value="bg">水利设施</option>														
 											</select>
 										</td>
 										<td>
@@ -58,22 +57,17 @@
 											</select>
 										</td>
 									</tr>
-								<!-- 	<tr>
-										<td>添加位置:</td>
-										<td><input class="easyui-textbox" type="text" name="name" data-options="required:true"></input>
-										</td>
-									</tr> -->
-									<tr>
+									<!-- <tr>
 										<td>显示顺序:</td>
 										<td><input class="easyui-textbox" type="text" name="email" value="可不填" data-options="required:true,validType:'email'"></input>
 										</td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td>分类名称:</td>
 										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
 										</td>
 									</tr>
-									<tr>
+									<!-- <tr>
 										<td>路径目标:</td>
 										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
 										</td>
@@ -82,13 +76,7 @@
 										<td>代码:</td>
 										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
 										</td>
-									</tr>
-									<!--<tr>
-										<td>Message:</td>
-										<td><input class="easyui-textbox" name="message" data-options="multiline:true" style="height:60px"></input>
-										</td>
-									</tr>-->
-									
+									</tr> -->
 								</table>
 							</form>
 							<div style="text-align:left;padding:5px">
@@ -112,12 +100,17 @@
 						function doAjax(){
 							console.log("dojax")
 							$("#mytree").tree({
-								url:"../../projectKindController/getProjectKidJson.do",
-								loadData:function(data){
-									var json = eval(data);
+							 	/* data:  [{"id":1,"state":"open","children":[{"id":11,"pid":1,"text":"扩累畜牧子类","state":"closed","children":[]},{"id":12,"pid":1,"text":"测试子类1","state":"closed","children":[]},{"id":13,"pid":1,"text":"测试子类2","state":"closed","children":[]}]},{"id":1,"state":"open","children":[{"id":11,"pid":1,"text":"扩累畜牧子类","state":"closed","children":[]},{"id":12,"pid":1,"text":"测试子类1","state":"closed","children":[]},{"id":13,"pid":1,"text":"测试子类2","state":"closed","children":[]}]},{"id":1,"state":"open","children":[{"id":11,"pid":1,"text":"扩累畜牧子类","state":"closed","children":[]},{"id":12,"pid":1,"text":"测试子类1","state":"closed","children":[]},{"id":13,"pid":1,"text":"测试子类2","state":"closed","children":[]}]},{"id":2,"state":"open","children":[{"id":21,"pid":2,"text":"公路子类","state":"closed","children":[]}]}]
+
+ */
+								
+							 url:"../../projectKindController/getProjectKidJson.do" 
+								/* /*  loadData:function(data){ */
+									/* var json = eval(data);
 									console.log(json);
-									return json;
-								} 
+									return json;  */
+									
+								/*  }  */ 
 							})
 						}
 					</script>
