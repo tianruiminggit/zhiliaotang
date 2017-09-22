@@ -1,0 +1,378 @@
+[
+    {
+        "id": 1,
+        "text": "两项资金项目申报",
+        "state": "closed",
+        "iconCls": "1",
+        "attributes": {
+            "authPath": " "
+        },
+        "children": [
+            {
+                "id": 2,
+                "text": "项目申报",
+                "state": "closed",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                },
+                "children": [
+                    {
+                        "id": 10,
+                        "text": "申报汇总",
+                        "state": "open",
+                        "iconCls": "1",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 11,
+                        "text": "复核申报",
+                        "state": "open",
+                        "iconCls": "1",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 12,
+                        "text": "填制申报填写表",
+                        "state": "open",
+                        "iconCls": "1",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 13,
+                        "text": "待推荐项目",
+                        "state": "open",
+                        "iconCls": "1",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 14,
+                        "text": "原始申报数据",
+                        "state": "open",
+                        "iconCls": "1",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 15,
+                        "text": "待推荐项目",
+                        "state": "open",
+                        "iconCls": "1",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 16,
+                        "text": "数据备份",
+                        "state": "open",
+                        "iconCls": "1",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "text": "项目审核",
+                "state": "closed",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                },
+                "children": [
+                    {
+                        "id": 17,
+                        "text": "审核修改",
+                        "state": "open",
+                        "iconCls": "2",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 19,
+                        "text": "所有列表",
+                        "state": "open",
+                        "iconCls": "2",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 19,
+                        "text": "所有列表",
+                        "state": "open",
+                        "iconCls": "2",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 20,
+                        "text": "审批项目汇总",
+                        "state": "open",
+                        "iconCls": "2",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "text": "项目进度",
+                "state": "closed",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                },
+                "children": [
+                    {
+                        "id": 21,
+                        "text": "填写项目进度",
+                        "state": "open",
+                        "iconCls": "3",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 22,
+                        "text": "项目进度表",
+                        "state": "open",
+                        "iconCls": "3",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 23,
+                        "text": "项目验收",
+                        "state": "open",
+                        "iconCls": "3",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 23,
+                        "text": "项目验收",
+                        "state": "open",
+                        "iconCls": "3",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 23,
+                        "text": "项目验收",
+                        "state": "open",
+                        "iconCls": "3",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "text": "项目统计",
+                "state": "closed",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                },
+                "children": [
+                    {
+                        "id": 26,
+                        "text": "效益统计表1",
+                        "state": "open",
+                        "iconCls": "4",
+                        "attributes": {
+                            "authPath": "../jsp/XMtongji/xiaoyitognji1.html"
+                        }
+                    },
+                    {
+                        "id": 27,
+                        "text": "效益统计表2",
+                        "state": "open",
+                        "iconCls": "4",
+                        "attributes": {
+                            "authPath": "../jsp/XMtongji/xiaoyitongji2.html"
+                        }
+                    },
+                    {
+                        "id": 28,
+                        "text": "效益统计表3",
+                        "state": "open",
+                        "iconCls": "4",
+                        "attributes": {
+                            "authPath": "../jsp/XMtongji/xiaoyitongji3.html"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "text": "按地区分类",
+                "state": "closed",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                },
+                "children": [
+                    {
+                        "id": 30,
+                        "text": "统计表",
+                        "state": "open",
+                        "iconCls": "5",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 31,
+                        "text": "市州界面",
+                        "state": "open",
+                        "iconCls": "5",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 32,
+                        "text": "县级界面",
+                        "state": "open",
+                        "iconCls": "5",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "text": "信息报送",
+                "state": "closed",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                },
+                "children": [
+                    {
+                        "id": 33,
+                        "text": "上行报送",
+                        "state": "open",
+                        "iconCls": "6",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 34,
+                        "text": "已报送信息",
+                        "state": "open",
+                        "iconCls": "6",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "text": "系统设置",
+                "state": "closed",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                },
+                "children": [
+                    {
+                        "id": 35,
+                        "text": "单位设置",
+                        "state": "open",
+                        "iconCls": "7",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 36,
+                        "text": "类别设置",
+                        "state": "open",
+                        "iconCls": "7",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 37,
+                        "text": "用户管理",
+                        "state": "open",
+                        "iconCls": "7",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 38,
+                        "text": "角色管理",
+                        "state": "open",
+                        "iconCls": "7",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 39,
+                        "text": "权限管理",
+                        "state": "open",
+                        "iconCls": "7",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 40,
+                        "text": "系统日志",
+                        "state": "open",
+                        "iconCls": "7",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    },
+                    {
+                        "id": 41,
+                        "text": "登录日志",
+                        "state": "open",
+                        "iconCls": "7",
+                        "attributes": {
+                            "authPath": ""
+                        }
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "text": "修改密码",
+                "state": "open",
+                "iconCls": "1",
+                "attributes": {
+                    "authPath": ""
+                }
+            }
+        ]
+    }
+]

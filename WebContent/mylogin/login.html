@@ -8,20 +8,16 @@
     </title>
     <link href="zwfw.css"  type="text/css" rel="stylesheet" />
     <link href="yhzx.css" type="text/css" rel="stylesheet" />
-    <link href="ui-dialog.css"  rel="stylesheet" type="text/css" />
-    <script src="jquery-1.7.2.min.js"  type="text/javascript"></script>
-    <script src="dialog-plus-min.js"  type="text/javascript"></script>
-    <script src="u_common.js"  type="text/javascript"></script>
-    <script src="lp_js_win.js"  type="text/javascript"></script>
+    <script src="easyui/jquery.min.js"  type="text/javascript"></script>
     <script type="text/javascript">
-        $(function () {
-            $("#BtnSumit").click(function () { SubmitEvent(); });
-        });
         //提交事件
         function SubmitEvent() {
             var _userName = $("#txtUserName").val();
             var _userPwd = $("#txtUserPwd").val();
             var _code = $("#txtCode").val();
+            console.log(_userName);
+            console.log(_userPwd);
+            console.log(_code);
             if (_userName == "" || _userName == null || _userName == undefined) {
                 jq_ok_alert("用户名不能为空！", function () { });
                 return;
@@ -81,12 +77,10 @@
             });
         }
     </script>
-    <style type="text/css">
-        .nav{  width: 1000px;}
-    </style>
+    
 </head>
 <body>
-<form method="post" action="http://egov.sczw.gov.cn/usercenter/login.aspx" id="form1">
+<form method="post" action="#" id="form1">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="top_bg">
         <tbody>
         <tr>
@@ -95,7 +89,6 @@
                     <tbody>
                     <tr>
                         <td align="left" valign="middle">
-                            <script src="shijian.js" tppabs="http://egov.sczw.gov.cn/scripts/jquery/shijian.js" type="text/javascript"></script>
                         </td>
 
                         <td align="right" valign="middle">

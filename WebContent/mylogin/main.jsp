@@ -33,7 +33,8 @@ $(function(){
 	console.log("开始Ajax请求：");
 	$("#tree").tree({
 		lines:true,
-		url:'AuthServlet?action=menu&parentId=-1',
+		//url:'AuthServlet?action=menu&parentId=-1',
+	    url:'tree.json',
 		onLoadSuccess:function(){
 			$("#tree").tree('expandAll');
 		},
@@ -67,6 +68,7 @@ $(function(){
 		if($("#tabs").tabs("exists",node.text)){
 			$("#tabs").tabs("select",node.text);
 		}else{
+			console.log(node.attributes.authPath);
 			var content="<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src="+node.attributes.authPath+"></iframe>"
 			$("#tabs").tabs("add",{
 				title:node.text,
