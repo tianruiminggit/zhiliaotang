@@ -3,6 +3,8 @@ package com.d.Tree;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.google.gson.Gson;
 
 
@@ -17,6 +19,7 @@ import com.google.gson.Gson;
 
 public class TreeNodeTest {
 
+	@Test
 	public void m01(){
 		/**
 		 * 通过for循环模拟数据
@@ -25,12 +28,17 @@ public class TreeNodeTest {
 		TreeNode  rooTreeNode =  new TreeNode(1, null, "基础设施", null, null);//id 父节点 名称  状态  子节点
 		treeDataList.add(rooTreeNode);
 		for(int i =100;i<110;i++){
-			TreeNode childTreeNode = new TreeNode(i, 1, "乡村路桥", null, null);
+			TreeNode childTreeNode = new TreeNode(i, 1, "乡村路桥"+i, null, null);
 			treeDataList.add(childTreeNode);
 		}
-		List<TreeNode> newTreeDataList =getFatherTreeNode(treeDataList);//把构建的树节点的数据模型传递到getFatherTreeNode中
+		
 		Gson gson = new Gson();//Gson需要到Gson包 用于生产json数据
+	/*	System.out.println(gson.toJson(treeDataList));*/
+		
+		List<TreeNode> newTreeDataList =getFatherTreeNode(treeDataList);//把构建的树节点的数据模型传递到getFatherTreeNode中
+		
 		System.out.println(gson.toJson(newTreeDataList));
+
 	}
 	/**
 	 * 方法的返回值就是一个带有子节点和父节点关系的数据模型
@@ -43,7 +51,7 @@ public class TreeNodeTest {
 		for(TreeNode treenode:treeDataList){//遍历基础数据（无关系的基础数据）
 			if(treenode.getPid()==null){//判断是否是跟节点，没有父节点
 				treenode.setState("open");
-				treenode.setChildren(getChildrenTreeNode(treenode.getId(), treeDataList));//设置子节点，找该父节点下右哪些子节点，确立好他们之间的关系
+				treenode.setChildren(getChildrenTreeNode(treenode.getId(), treeDataList));//设置子节点，找该父节点下有哪些子节点，确立好他们之间的关系
 				newTreeDataList.add(treenode);				
 			}
 		}	

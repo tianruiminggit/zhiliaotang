@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        用户登录-电子政务大厅
+    </title>
+    <link href="zwfw.css"  type="text/css" rel="stylesheet" />
+    <link href="yhzx.css" type="text/css" rel="stylesheet" />
+    <link href="ui-dialog.css"  rel="stylesheet" type="text/css" />
+    <script src="jquery-1.7.2.min.js"  type="text/javascript"></script>
+    <script src="dialog-plus-min.js"  type="text/javascript"></script>
+    <script src="u_common.js"  type="text/javascript"></script>
+    <script src="lp_js_win.js"  type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#BtnSumit").click(function () { SubmitEvent(); });
+        });
+        //提交事件
+        function SubmitEvent() {
+            var _userName = $("#txtUserName").val();
+            var _userPwd = $("#txtUserPwd").val();
+            var _code = $("#txtCode").val();
+            if (_userName == "" || _userName == null || _userName == undefined) {
+                jq_ok_alert("用户名不能为空！", function () { });
+                return;
+            }
+            if (_userPwd == "" || _userPwd == null || _userPwd == undefined) {
+                jq_ok_alert("用户密码不能为空！", function () { });
+                return;
+            }
+            if (_code == "" || _code == null || _code == undefined) {
+                jq_ok_alert("请填写系统验证码！", function () { });
+                return;
+            }
+            var _dialog = null;
+            $.ajax({
+                url: '../tools/SubmitHandler.ashx',
+                type: 'post',
+                dataType: 'json',
+                data: [
+                    { "name": "Action", "value": "Login" },
+                    { "name": "userName", "value": _userName },
+                    { "name": "userPwd", "value": _userPwd },
+                    { "name": "code", "value": _code }
+                ],
+                success: function (data) {
+                    if (data.status == "1") {
+                        _dialog.content("登录成功，正在跳转...");
+                        var reUrl = $("#re_url").val();
+                        if (reUrl == "" || reUrl == null || reUrl == undefined) {
+                            location.href = "index.aspx.htm"/*tpa=http://egov.sczw.gov.cn/usercenter/index.aspx*/;
+                        }
+                        else {
+                            location.href = reUrl;
+                        }
+                    }
+                    else {
+                        _dialog.close();
+                        if (data.msg == "" || data.msg == null || data.msg == undefined) {
+                            jq_ok_alert("用户登录失败，请确认用户名和密码是否正确！", function () { });
+                        }
+                        else {
+                            jq_ok_alert(data.msg, function () { });
+                        }
+                        return;
+                    }
+                },
+                error: function () {
+                    _dialog.close();
+                    jq_ok_alert("网络异常，登录失败，请稍后再试！", function () {  }, "系统提示", "32X32/i.png");
+
+                    return;
+                },
+                beforeSend: function () {
+                    _dialog = dialog({
+                        content: '用户登录中，请稍等..'
+                    }).showModal();
+                }
+            });
+        }
+    </script>
+    <style type="text/css">
+        .nav{  width: 1000px;}
+    </style>
+</head>
+<body>
+<form method="post" action="http://egov.sczw.gov.cn/usercenter/login.aspx" id="form1">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="top_bg">
+        <tbody>
+        <tr>
+            <td height="28" valign="middle">
+                <table width="1000" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td align="left" valign="middle">
+                            <script src="shijian.js" tppabs="http://egov.sczw.gov.cn/scripts/jquery/shijian.js" type="text/javascript"></script>
+                        </td>
+
+                        <td align="right" valign="middle">
+                            <div id="menu">
+                            </div> </td>
+                    </tr>
+                    </tbody>
+                </table> </td>
+        </tr>
+        <tr>
+            <td height="144">
+                <table width="1000" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td width="584" align="left" valign="top" class="logo"> <img src="logo.png" width="584" height="83" /> </td>
+                        <td width="416" align="right" valign="middle">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td align="right" valign="middle"></td>
+                                    <td width="66" align="right" valign="middle"></td>
+                                </tr>
+                                </tbody>
+                            </table> </td>
+                    </tr>
+                    </tbody>
+                </table> </td>
+        </tr>
+        </tbody>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <td height="41" align="center" valign="middle" bgcolor="#00589c">
+                <div class="nav">
+                    <ul>
+                    </ul>
+                </div> </td>
+        </tr>
+        </tbody>
+    </table>
+    <table width="1000" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+        <tr>
+            <td width="560" align="left" valign="middle"> <img src="yh_02.jpg" tppabs="http://egov.sczw.gov.cn/skin/images/yh_02.jpg" width="560" height="473" /> </td>
+            <td width="440" align="right" valign="middle">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td align="right" valign="top">
+                            <table width="345" border="0" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td align="left" valign="bottom"> <img src="yh_03.jpg" tppabs="http://egov.sczw.gov.cn/skin/images/yh_03.jpg" width="345" height="46" /> </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" valign="top" class="bo_zyb p15_q">
+                                        <table width="100%" border="0" cellspacing="10" cellpadding="0">
+                                            <tbody>
+                                            <tr>
+                                                <td align="right" valign="middle"> 用户名： </td>
+                                                <td align="left" valign="middle"> <input name="txtUserName" type="text" class="in_yh1" id="txtUserName" size="25" /> </td>
+                                            </tr>
+                                            <tr>
+                                                <td align="right" valign="middle"> 密&nbsp;&nbsp;&nbsp;&nbsp;码： </td>
+                                                <td align="left" valign="middle"> <input name="txtUserPwd" type="password" class="in_yh1" id="txtUserPwd" size="25" /> </td>
+                                            </tr>
+                                            <tr>
+                                                <!-- 验证码部分-->
+                                                <td align="right" valign="middle"></td>
+                                                <td align="left" valign="middle"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" align="right" valign="middle">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td width="13%" height="45" valign="bottom"> &nbsp; </td>
+                                                            <td width="59%"> <input type="button" name="BtnSumit" id="BtnSumit" value="登 录" class="btn_01" style="margin: 0 auto;" /> </td>
+                                                            <td width="28%"> </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table> </td>
+                                            </tr>
+                                            </tbody>
+                                        </table> </td>
+                                </tr>
+                                <tr>
+                                    <td height="46" align="center" valign="middle" bgcolor="#f0f0f0" class="bo_zyb f12 "></td>
+                                </tr>
+                                </tbody>
+                            </table> </td>
+                    </tr>
+                    <tr>
+                        <td align="right" valign="top"> <img src="yh_05.jpg" tppabs="http://egov.sczw.gov.cn/skin/images/yh_05.jpg" width="370" height="51" /> </td>
+                    </tr>
+                    </tbody>
+                </table> </td>
+        </tr>
+        </tbody>
+    </table>
+    <input name="re_url" type="hidden" id="re_url" />
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="foot">
+        <tbody>
+        <tr>
+            <td height="157">
+                <p>
+
+                </p>
+                <p>
+                    <a href=""  style="padding:0px 10px">网站声明</a>
+                    |<a href="" style="padding:0px 10px">帮助中心</a>
+                    |<a href="" style="padding:0px 10px">联系我们</a>
+                    |<a href="" style="padding:0px 10px">主编信箱</a>
+                </p>
+                <p> 版权所有：四川省人民政府办公厅
+                    <br />
+                    联系电话：(028)11111111　技术支持：四川省电子政务外网运营中心
+                    <br />
+                    蜀ICP备：11111111号
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

@@ -20,60 +20,12 @@
 		<h2>单位设置页面</h2>
 
 		<div style="margin:20px 0;"></div>
-		<div class="easyui-layout" style="width:1500px;height:700px;">
+		<div class="easyui-layout" style="width:300px;height:700px;display:inline-block">
 			<ul id="mytree"></ul>
-			<!--左框架 -->
-			<!-- <div data-options="region:'west',split:true" title="West" style="width:200px;height: 700px;">
-				左边导航栏
-				<div class="easyui-panel" style="padding:5px;height: 700px;">
-					<ul class="easyui-tree">
-						<li>
-							<span>参数设置</span>
-							<ul>
-								<li data-options="state:'closed'">
-									<span>分类</span>
-									<ul>
-										<li>
-											<span>培训及项目管理</span>
-										</li>
-										<li>
-											<span>财政补贴</span>						
-										</li>
-										<li>
-											<span>社会事业</span>
-											<ul>
-												<li>
-													<span>教育</span>
-												<ul>
-													<li>广播电视</li>
-													<li>科技文化</li>
-													<li>卫生</li>
-												</ul>
-												</li>
-											</ul>				
-										</li>
-										<li>
-											<span>基础设施</span>
-											<ul>
-												<li>其他</li>
-												<li>住房解困</li>
-												<li>乡村路桥</li>
-												<li>乡村能源</li>
-												<li>水利设施</li>
-												<li>农牧林业</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								
-							</ul>
-						</li>
-					</ul>
-				</div> -->
-
-			</div>
+			
+		</div>
 <!--右边内容-->
-			<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'" style="height: 700px;">
+			<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'" style="height: 700px;display:inline-block;vertical-align:top">
 
 				<!--图标-->
 				<div id="tb" style="padding:5px;height:auto">
@@ -145,9 +97,9 @@
 							</div>
 						</div>
 					
-					
-					
-					
+				</div>	
+				</div>
+										
 					<script>
 						function submitForm() {
 							$('#ff').form('submit');
@@ -158,22 +110,20 @@
 						}
 						
 						function doAjax(){
-							console.log("doajax")
-							$.ajax({
-								type:"get",
+							console.log("dojax")
+							$("#mytree").tree({
 								url:"../../projectKindController/getProjectKidJson.do",
-								success:function(result){
-									console.log("result"+result)
-									$("#mytree").tree({
-										url:"result"
-									})
-								}
-							});
+								loadData:function(data){
+									var json = eval(data);
+									console.log(json);
+									return json;
+								} 
+							})
 						}
 					</script>
 
-				</div>
-
+				
+			
+			
 	</body>
-
 </html>

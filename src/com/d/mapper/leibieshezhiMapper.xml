@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.d.dao.leibieshezhiDao">
-	<select id="getlistProjectkind" resultType="com.d.entity.Projectkind">
-		select*from tb_projectkind
+	<select id="getlistProjectkind" resultType="com.d.entityAll.leibieshezhientity">
+		SELECT  tb_kindchild.child_id,tb_kindchild.child_name,tb_kindchild.kind_id FROM tb_kindchild, tb_projectkind 
+WHERE  
+ tb_kindchild.kind_id = tb_projectkind.kind_id
 	</select>
 </mapper>
 
