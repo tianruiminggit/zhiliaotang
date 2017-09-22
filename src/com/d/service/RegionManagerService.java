@@ -34,7 +34,7 @@ public interface RegionManagerService {
 	 * @param c
 	 * @return
 	 */
-	List<City> getCityByProvince(County c);
+	List<City> getListCounty(County c);
 	/**
 	 * 根据选择添加单位类型来添加数据
 	 * @param map

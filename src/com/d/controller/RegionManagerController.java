@@ -41,8 +41,10 @@ public class RegionManagerController {
 	@RequestMapping("/getProvince")
 	@ResponseBody
 	public List<Province> getListProvince(Province p){
+		pnum = regionService.getListProvince(new Province()).size();
+		cnum = regionService.getListCity(new City()).size();
+		ccnum = regionService.getListCounty(new County()).size();
 		List<Province> list = regionService.getListProvince(p);
-		pnum = list.size();
 		return list;
 		
 	}
@@ -57,7 +59,6 @@ public class RegionManagerController {
 	@RequestMapping("/getCity")
 	public List<City> getListCity(City c){
 		List<City> list = regionService.getListCity(c);
-		cnum=list.size();
 		return list;
 		
 	}
@@ -66,11 +67,10 @@ public class RegionManagerController {
 	 * @param c
 	 * @return
 	 */
-	@RequestMapping("/getCityByProvince")
+	@RequestMapping("/getCounty")
 	@ResponseBody
 	public List<City> getCityByProvince(County c){
-		List<City> list = regionService.getCityByProvince(c);
-		ccnum=list.size();
+		List<City> list = regionService.getListCounty(c);
 		return list;
 	}
 	/**
@@ -88,17 +88,17 @@ public class RegionManagerController {
 	public String insertRegion(String table,String province_id,String province_name,String city_id,String city_name,String county_id,String county_name){
 		Map<String, Object> map = new HashMap<>();
 		map.put("tablename", table);
-		if(province_id==null){
+		if(province_id==null||province_id==""){
 			province_id = "sheng"+pnum;
 		}
 		map.put("province_id", province_id);
 		map.put("province_name", province_name);
-		if(city_id==null){
+		if(city_id==null||city_id==""){
 			city_id = "shi"+cnum;
 		}
 		map.put("city_id", city_id);
 		map.put("city_name", city_name);
-		if(county_id==null){
+		if(county_id==null||county_id==""){
 			county_id = "xian"+ccnum;
 		}
 		map.put("county_id", county_id);
@@ -106,7 +106,7 @@ public class RegionManagerController {
 		int i = regionService.insertRegion(map);
 //		int i = regionService.insertRegion(table,province_id,province_name,city_id,city_name,county_id,county_name);
 //		System.out.println(i);
-		return "XTguanli/leibieshezhi";
+		return "XTguanli/unitsSetup";
 		
 	}
 	
@@ -133,6 +133,11 @@ public class RegionManagerController {
 			return list;
 		}
 		return list;
+		
+	}
+	
+	public String updateRegion(String table,String province_id,String province_name,String city_id,String city_name,String county_id,String county_name){
+		return null;
 		
 	}
 }

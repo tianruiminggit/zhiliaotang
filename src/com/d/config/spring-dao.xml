@@ -51,7 +51,7 @@
 			<tx:attributes>
 				<tx:method name="get*" read-only="true"/>
 				<tx:method name="insert*" propagation="REQUIRED"/>
-				<tx:method name="updata*" propagation="REQUIRED"/>
+				<tx:method name="update*" propagation="REQUIRED"/>
 				<tx:method name="delete*" propagation="REQUIRED"/>				
 			
 			</tx:attributes>

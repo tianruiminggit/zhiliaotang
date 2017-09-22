@@ -32,43 +32,6 @@
 			<!--左框架 -->
 			<div data-options="region:'west',split:true" title="West" style="width:20%;height: 700px;">
 			<ul id="tree_nav"></ul>
-<!-- 				<div class="easyui-panel" style="padding:5px;height: 700px;">
-					<ul class="easyui-tree">
-						<li>
-							<span>四川省</span>
-							<ul>
-								<li data-options="state:'closed'">
-									<span>泸州市</span>
-									<ul>
-										<li>
-											<span>叙永县</span>
-										</li>
-										<li>
-											<span>古蔺县</span>
-										</li>
-										<li>
-											<span>纳溪县</span>
-										</li>
-									</ul>
-								</li>
-								攀枝花市
-								<li>
-									<span>攀枝花市</span>
-									<ul>
-										<li>仁和县</li>
-										<li>仁和县</li>
-										<li>M仁和县</li>
-										<li>仁和县</li>
-									</ul>
-								</li>
-								<li>内江市</li>
-								<li>自贡市</li>
-								<li>宜宾市</li>
-							</ul>
-						</li>
-					</ul>
-				</div> -->
-
 			</div>
 <!--右边内容-->
 			<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'" style="height: 700px;">
@@ -76,18 +39,16 @@
 				<!--图标-->
 				<div id="tb" style="padding:5px;height:auto">
 					<div style="margin-bottom:5px">
-						<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加分类</a>
-						<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改分类</a>
+						<a id="btn_add" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加分类</a>
+						<a id="btn_update" href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改分类</a>
 						<!--<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
 						<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>-->
-						<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除分类</a>
+						<a id="btn_delete" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除分类</a>
 					</div>
-
-					
 						<div style="padding:10px 60px 20px 60px">
 							<form id="ff" method="get" action="../../region/insertRegion.do" >
 								<table cellpadding="5">
-									<tr>
+									<tr id="select_type">
 										<td>添加类别:</td>
 										<td>
 											<select id="type" name="table" onchange="choseType()">
@@ -100,7 +61,7 @@
 									</tr>
 									<tr id="province">
 										<td>省名:</td>
-										<td><input class="easyui-textbox" type="text" name="province_name" data-options="required:true"></input>
+										<td><input id="ptext" class="easyui-textbox" type="text" name="province_name" data-options="required:true"></input>
 										</td>
 									</tr>
 									<tr id="p_select">
@@ -112,7 +73,7 @@
 									</tr>
 									<tr id="city">
 										<td>市名:</td>
-										<td><input class="easyui-textbox" type="text" name="city_name" data-options="required:true"></input>
+										<td><input id="ctext" class="easyui-textbox" type="text" name="city_name" data-options="required:true"></input>
 										</td>
 									</tr>
 									<tr id="c_select">
@@ -124,75 +85,157 @@
 									</tr>
 									<tr id="county">
 										<td>县名:</td>
-										<td><input class="easyui-textbox" type="text" name="county_name" data-options="required:true"></input>
+										<td><input id="cctext" class="easyui-textbox" type="text" name="county_name" data-options="required:true"></input>
 										</td>
 									</tr>
 								</table>
 							</form>
 							<div style="text-align:left;padding:5px">
-								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">添加分类</a>
+								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">确定</a>
 								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重写</a>
 							</div>
-							<button onclick="treeTest()">测试下</button>
 						</div>
 					
 					
 					
 					
 					<script>
+						$("#tree_nav").tree({
+							url:"../../region/regionTree.do",
+							onClick:function(node){
+								if("e"==node.id[2]){
+									$.ajax({
+										type:"get",
+										url:"../../region/getProvince.do",
+										dataType:"json",
+										data:{"province_id":node.id},
+										success:function(result){
+											$('#ptext').textbox({
+												"value":result[0].province_name,
+												"readonly":true
+											})	
+											$("#province").show();
+											$("#select_type").hide();
+											$("#type").val("tb_province");
+											console.log($("#type").val());
+											$("#p_select").hide();
+											$("#city").hide();
+											$("#c_select").hide();
+											$("#county").hide(); 
+											
+										}
+									});
+								}
+								if("i"==node.id[2]){
+									$.ajax({
+										type:"get",
+										url:"../../region/getCity.do",
+										dataType:"json",
+										data:{"city_id":node.id},
+										success:function(result){
+											$('#ctext').textbox({
+												"value":result[0].city_name,
+												"readonly":true
+											})	
+											$("#province").hide();
+											$("#select_type").hide();
+											$("#type").val("tb_city");
+											console.log($("#type").val());
+											$("#p_select").hide();
+											$("#city").show();
+											$("#c_select").hide();
+											$("#county").hide(); 
+											
+										}
+									});
+								}
+								if("a"==node.id[2]){
+									$.ajax({
+										type:"get",
+										url:"../../region/getCounty.do",
+										dataType:"json",
+										data:{"county_id":node.id},
+										success:function(result){
+											$('#cctext').textbox({
+												"value":result[0].county_name,
+												"readonly":true
+											})	
+											$("#province").hide();
+											$("#select_type").hide();
+											$("#type").val("tb_couty");
+											console.log($("#type").val());
+											$("#p_select").hide();
+											$("#city").hide();
+											$("#c_select").hide();
+											$("#county").show(); 
+											
+										}
+									});
+								}
+							}
+						});
 						function myhide(){
 							$("#province").hide();
 							$("#p_select").hide();
 							$("#city").hide();
 							$("#c_select").hide();
 							$("#county").hide();
-							$("#tree_nav").tree({
-								url:"../../region/regionTree.do"
-							})
 						}
 						function submitForm() {
 							$('#ff').submit();
 						}
 
 						function clearForm() {
-							$('#ff').form('rest');
+							$('#ff').form('reset');
+						}
+						function select_s(){
+							$("#province").show();
+							$("#p_select").hide();
+							$("#city").hide();
+							$("#c_select").hide();
+							$("#county").hide();
+						}
+						function select_ss(){
+							$("#province").hide();
+							$("#p_select").show();
+							$("#city").show();
+							$("#c_select").hide();
+							$("#county").hide();
+							choseProvince()
+						}
+						function select_x(){
+							$("#province").hide();
+							$("#p_select").show();
+							$("#city").hide();
+							$("#c_select").show();
+							$("#county").show();
+							choseProvince()
+						}
+						function no_select(){
+							$("#province").hide();
+							$("#p_select").hide();
+							$("#city").hide();
+							$("#c_select").hide();
+							$("#county").hide();
 						}
 						function choseType(){
 							var type = $("#type").val();
 							if("tb_province"==type){
-								$("#province").show();
-								$("#p_select").hide();
-								$("#city").hide();
-								$("#c_select").hide();
-								$("#county").hide();
+								select_s();
 							}
 							if("tb_city"==type){
-								$("#province").hide();
-								$("#p_select").show();
-								$("#city").show();
-								$("#c_select").hide();
-								$("#county").hide();
-								choseProvince()
+								select_ss();
 							}
 							if("tb_county"==type){
-								$("#province").hide();
-								$("#p_select").show();
-								$("#city").hide();
-								$("#c_select").show();
-								$("#county").show();
-								choseProvince()
+								select_x();
 							}
 							if(""==type||type==null){
-								$("#province").hide();
-								$("#p_select").hide();
-								$("#city").hide();
-								$("#c_select").hide();
-								$("#county").hide();
+								no_select();
 							}
 						}
 						function choseProvince(){
 							$("#province_id").empty();
-							$("#province_id").append("<option value='pp'>请选择</option>")
+							$("#province_id").append("<option value=''>请选择</option>")
 							$.ajax({
 								type:"get",
 								url:"../../region/getProvince.do",
@@ -206,7 +249,7 @@
 						}
 						function choseCity(){
 							$("#city_id").empty();
-							$("#city_id").append("<option value='pp'>请选择</option>")
+							$("#city_id").append("<option value=''>请选择</option>")
 							$.ajax({
 								type:"get",
 								url:"../../region/getCity.do?province_id="+$("#province_id").val(),
@@ -218,16 +261,20 @@
 								}
 							});
 						}
-						
-						function treeTest(){
-							$.ajax({
-								type:"get",
-								url:"../../region/regionTree.do",
-								success:function(result){
-									console.log(result);
-								}
-							})
-						}
+					$("#btn_add").click(function(){
+						$("input").textbox({
+							"value":"",
+							"readonly":false
+						});
+						$('#ff').form('reset');
+						$("#select_type").show();
+						no_select();
+					})
+					$("#btn_update").click(function(){
+						$("input").textbox({
+							"readonly":false
+						});
+					})
 					</script>
 
 				</div>
