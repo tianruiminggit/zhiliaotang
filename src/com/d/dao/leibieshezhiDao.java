@@ -14,4 +14,7 @@ public interface leibieshezhiDao {
 		public List<leibieshezhientity> getlistProjectkind();
 		/*public List<Map<String,Object>> getlistProjectkind();*/
 		
+		
+		
+		
 }

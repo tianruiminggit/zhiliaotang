@@ -58,6 +58,7 @@ public class leibeishezhiServiceImpl  implements leibeishezhiService{
 			TreeNode childTreeNode =new TreeNode(li.getChild_id(), li.getKind_id(), li.getChild_name(), null, null);
 			treeDataList.add(childTreeNode);
 		}
+		
 		/*tree.getFatherTreeNode(treeDataList);*/
 		
 		return treeDataList;
