@@ -3,6 +3,7 @@ package com.d.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,9 +45,15 @@ public class leibeishezhiServiceImpl  implements leibeishezhiService{
 			treeDataList.add(childTreeNode);
 		}
 		*/		
+	
+		
+		
+		
+		
+		
 		List<leibieshezhientity> list = leibieshezhi.getlistProjectkind();
 		List<TreeNode> treeDataList = new ArrayList<>();//存储所有的节点（父节点和子节点）
-		for(leibieshezhientity li:list){
+		/*for(leibieshezhientity li:list){
 			
 			TreeNode rootTreeNode = new TreeNode(li.getKind_id(),null,li.getKind_name(),null,null);//id 父节点，text，stata，children
 			treeDataList.add(rootTreeNode);
@@ -57,7 +64,7 @@ public class leibeishezhiServiceImpl  implements leibeishezhiService{
 				
 			TreeNode childTreeNode =new TreeNode(li.getChild_id(), li.getKind_id(), li.getChild_name(), null, null);
 			treeDataList.add(childTreeNode);
-		}
+		}*/
 		
 		/*tree.getFatherTreeNode(treeDataList);*/
 		
@@ -66,6 +73,14 @@ public class leibeishezhiServiceImpl  implements leibeishezhiService{
 		
 		
 		
+	}
+	
+	
+	
+	@Override
+	public List<TreeNode> tree(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return leibieshezhi.tree(map);//调用Dao层中的生成树方法
 	}
 
 }

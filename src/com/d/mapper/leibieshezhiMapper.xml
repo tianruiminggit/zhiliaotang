@@ -11,10 +11,30 @@ WHERE
 	<select id="s" resultType="com.d.entity.Projectkind">
 		SELECT * FROM tb_projectkind		
 	</select>
+	
+	<!-- 查询子类别数据 -->
+	<select id="getkindchild" resultType="com.d.entity.Kindchild" parameterType="com.d.entity.Kindchild">
+		 SELECT * FROM tb_kindchild where 1=1
+		 <if test="child_id != null">
+		 and child_id=#{child_id}
+		 </if>
 		
-		<!-- 查询子类别（子节点） -->
-	<select id="d" resultType="com.d.entity.Kindchild">		
-		SELECT * FROM tb_kindchild	
+		<if test="kind_id != null">
+		and kind_id=#{kind_id}
+		</if>
+		 
+	</select>
+	
+	<select id="tree" resultType="com.d.Tree.TreeNode" parameterType="java.util.HashMap">
+		
+		<if test="tablename =='tb_projectkind'.toString() ">			
+	SELECT  kind_id AS id ,kind_name AS text FROM  tb_projectkind		
+		</if>
+		
+		<if test="tablename=='tb_kindchild'.toString()">			
+	 SELECT  child_id AS id,child_name AS TEXT FROM tb_kindchild  where kind_id = #{id}
+		</if>
+	
 	</select>
 	
 	

@@ -14,13 +14,13 @@ public class TreeNodeUtil {
 	 */
 	public static List<TreeNode> getFatherTreeNode(List<TreeNode> treeDataList){
 		List<TreeNode> newTreeDataList = new ArrayList<>();//包含所有节点之间的关系
-		for(TreeNode treenode:treeDataList){//遍历基础数据（无关系的基础数据）
+		/*for(TreeNode treenode:treeDataList){//遍历基础数据（无关系的基础数据）
 			if(treenode.getPid()==null){//判断是否是跟节点，没有父节点
 				treenode.setState("open");
 				treenode.setChildren(getChildrenTreeNode(treenode.getId(), treeDataList));//设置子节点，找该父节点下有哪些子节点，确立好他们之间的关系
 				newTreeDataList.add(treenode);				
 			}
-		}	
+		}	*/
 		return newTreeDataList;
 	}
 	/**
@@ -29,7 +29,7 @@ public class TreeNodeUtil {
 	 */
 	private static List<TreeNode> getChildrenTreeNode(Integer pid,List<TreeNode> treeDataList){
 		List<TreeNode> newTreeDataList = new ArrayList<>();//包含某一个父节点的子节点集合
-		for(TreeNode treeNode :treeDataList){//遍历基础数据，因为还有一份子节点包含在treeDataList里面
+		/*for(TreeNode treeNode :treeDataList){//遍历基础数据，因为还有一份子节点包含在treeDataList里面
 			if(treeNode.getPid()==null) continue;
 			if(treeNode.getPid()==pid){//判断子节点
 				treeNode.setState("closed");
@@ -37,7 +37,7 @@ public class TreeNodeUtil {
 				newTreeDataList.add(treeNode);
 			}
 			
-		}	
+		}	*/
 		return newTreeDataList;
 	}
 }

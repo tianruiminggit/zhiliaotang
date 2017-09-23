@@ -15,21 +15,21 @@ import java.util.List;
  *
  */
 public class TreeNode {
-	private Integer id;//节点的编号
-	private Integer pid;//父节点编号
+	private String id;//节点的编号
+	private String pid;//父节点编号
 	private String text;
 	private String state;//展开状态
 	private List<TreeNode> children;//子节点
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public Integer getPid() {
+	public String getPid() {
 		return pid;
 	}
-	public void setPid(Integer pid) {
+	public void setPid(String pid) {
 		this.pid = pid;
 	}
 	public String getText() {
@@ -50,15 +50,8 @@ public class TreeNode {
 	public void setChildren(List<TreeNode> children) {
 		this.children = children;
 	}
-	public TreeNode(Integer id, Integer pid, String text, String state,
-			List<TreeNode> children) {
-		super();
-		this.id = id;
-		this.pid = pid;
-		this.text = text;
-		this.state = state;
-		this.children = children;
-	}
+	
+	
 	
 	
 }

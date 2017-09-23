@@ -46,21 +46,31 @@ public class projectKindController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping
+	@RequestMapping("/tree")
 	@ResponseBody
-	public List<TreeNode>   tree(String table,int id){
+	public List<TreeNode>   tree(String table,String id){
 		Map<String, Object> map = new HashMap<>();
 		if(table==null){//如果页面没有传表名过来 就自己给他添加一个表
 			map.put("tablename", "tb_projectkind");
 		}else{
 			map.put("tablename", table);
 		}
-		map.put("id", id);//第一次调用不起作用，没有传值，为下面用递归是起作用
+		map.put("id",id);//第一次调用不起作用，没有传值，为下面用递归是起作用
 		
-		List<TreeNode> list = leibeishezhi.getlistProjectkind();//查询父节点表数据，封装到集合对象中
+		List<TreeNode> list = leibeishezhi.tree(map);//调用service中的生成树方法，并把map参数传进去
+		if(table==null){
+			for(TreeNode a:list){
+				//添加子节点 并递归
+				a.setChildren(tree("tb_kindchild", a.getId()));
+			}			
+		}
+		//如果表为子表 
+		if("tb_kindchild".equals(table)){
+			return list;
+		}
 		
 		
-		return null;
+		return list;
 	}
 	
 	
