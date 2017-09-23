@@ -93,14 +93,14 @@ $(function(){
 
 <div class="easyui-layout" style="width:100%;height:100%;">
 
-    <div data-options="region:'north'" style="height:100px;">
+    <div data-options="region:'north'" style="height:40px;">
     
     	<!--  <img class="img1" alt="" src="images/logo.png">   -->
     	
 		
     </div>
     
-    <div data-options="region:'south',split:true" style="height:50px; line-height:40px">
+    <div data-options="region:'south',split:true" style="height:50px; line-height:20px">
 
 		<span style="margin-left:20px">欢迎：${currentUser.userName }&nbsp;『${currentUser.userDescription }』</span>
     </div>

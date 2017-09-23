@@ -23,7 +23,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/shenbaohuizong.jsp"
                         }
                     },
                     {
@@ -32,7 +32,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/fuheshenbao.jsp"
                         }
                     },
                     {
@@ -41,7 +41,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/declaration.jsp"
                         }
                     },
                     {
@@ -50,7 +50,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/daituijian.jsp"
                         }
                     },
                     {
@@ -59,7 +59,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/yuanshishuju.jsp"
                         }
                     },
                     {
@@ -77,7 +77,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/shujubeifen.jsp"
                         }
                     }
                 ]
