@@ -23,7 +23,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/shenbaohuizong.jsp"
                         }
                     },
                     {
@@ -32,7 +32,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/fuheshenbao.jsp"
                         }
                     },
                     {
@@ -41,7 +41,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/declaration.jsp"
                         }
                     },
                     {
@@ -50,7 +50,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/daituijian.jsp"
                         }
                     },
                     {
@@ -59,7 +59,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/yuanshishuju.jsp"
                         }
                     },
                     {
@@ -68,7 +68,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/daituijian.jsp"
                         }
                     },
                     {
@@ -77,7 +77,7 @@
                         "state": "open",
                         "iconCls": "1",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/shujubeifen.jsp"
                         }
                     }
                 ]
@@ -97,36 +97,18 @@
                         "state": "open",
                         "iconCls": "2",
                         "attributes": {
-                            "authPath": "../jsp/XMshenbao/shujubeifen.jsp"
+                            "authPath": "../jsp/XMshenpi/xiangmushenpi.jsp"
                         }
                     },
                     {
-                        "id": 19,
-                        "text": "所有列表",
+                        "id": 191,
+                        "text": "已审批项目",
                         "state": "open",
                         "iconCls": "2",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenpi/yishenpi.jsp"
                         }
-                    },
-                    {
-                        "id": 19,
-                        "text": "所有列表",
-                        "state": "open",
-                        "iconCls": "2",
-                        "attributes": {
-                            "authPath": ""
-                        }
-                    },
-                    {
-                        "id": 20,
-                        "text": "审批项目汇总",
-                        "state": "open",
-                        "iconCls": "2",
-                        "attributes": {
-                            "authPath": ""
-                        }
-                    }
+                    }   
                 ]
             },
             {
@@ -155,7 +137,7 @@
                         "state": "open",
                         "iconCls": "3",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshishi/jinduhuizong.jsp"
                         }
                     },
                     {
@@ -164,9 +146,7 @@
                         "state": "open",
                         "iconCls": "3",
                         "attributes": {
-                            "authPath": 
-
-"../jsp/XMshishi/xiangmuyanshou.jsp"
+                            "authPath":"../jsp/XMshishi/xiangmuyanshou.jsp"
                         }
                     },
                     {
@@ -248,7 +228,7 @@
                         "state": "open",
                         "iconCls": "5",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMtongji/tongjibiao.html"
                         }
                     },
                     {
@@ -257,7 +237,7 @@
                         "state": "open",
                         "iconCls": "5",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMtongji/shizhoujiemian.html"
                         }
                     },
                     {
@@ -266,7 +246,7 @@
                         "state": "open",
                         "iconCls": "5",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMtongji/shizhoujiemian.html"
                         }
                     }
                 ]
@@ -315,7 +295,7 @@
                         "state": "open",
                         "iconCls": "7",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XTguanli/unitsSetup.jsp"
                         }
                     },
                     {
@@ -351,7 +331,7 @@
                         "state": "open",
                         "iconCls": "7",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XTguanli/userpower.jsp"
                         }
                     },
                     {
@@ -360,7 +340,7 @@
                         "state": "open",
                         "iconCls": "7",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XTguanli/xitongrizhi.jsp"
                         }
                     },
                     {
@@ -369,7 +349,7 @@
                         "state": "open",
                         "iconCls": "7",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XTguanli/xitongdenglurizhi.jsp"
                         }
                     }
                 ]
