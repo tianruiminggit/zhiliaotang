@@ -1,56 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
-<head>
-<meta charset="UTF-8">
-<title>Basic Layout - jQuery EasyUI Demo</title>
-<link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/themes/icon.css">
-<link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/demo/demo.css">
-<script type="text/javascript"
-	src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
-<script type="text/javascript"
-	src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/demo/demo.css">
+		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
+		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+		<title></title>
+	</head>
 
-<body>
-	<h1 align="center">复核项目</h1>
-	<div class="easyui-layout" style="width: 100%; height: 350px;">
-		<div data-options="region:'north'" style="height: 45px">
-			<div style="line-height: 40px;">
-				地区： <select name="city">
-					<option value="XX">XX市</option>
-				</select> <select name="county">
-					<option value="XX">XX县</option>
-				</select> 时间： <select name="time">
-					<option value="2017">2017</option>
-				</select>
-			</div>
-		</div>
-		<div data-options="region:'center'">
-			<table id="tb" class="easyui-datagrid"
-				data-options="url:'testjson.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true,pagination:true">
-				<thead>
-					<tr>
-						<th data-options="field:'id'" hidden="true"></th>
-						<th data-options="field:'region'" width="10%">地区</th>
-						<th data-options="field:'单位名称'" width="10%">单位名称</th>
-						<th data-options="field:'project_name',align:'right'" width="30%">项目名称</th>
-						<th data-options="field:'buzhuzj',align:'right'" width="10%">补助资金</th>
-						<th data-options="field:'状态'" width="10%">状态</th>
-						<th data-options="field:'操作',align:'center'" width="30%">操作</th>
-					</tr>
-				</thead>
-			</table>
-		</div>
-	</div>
-	
-	<div id="kuang" class="easyui-dialog" title="项目详情" style="width:600px;height:500px;"   
+	<body>
+		<table id="tb" title="申报汇总表" class="easyui-treegrid" style="width:100;height:250px" data-options="
+				url: 'treegrid_data1.json',
+				method: 'get',
+				rownumbers: true,
+				idField: 'id',
+				treeField: 'name'
+			">
+			<thead>
+				<tr>
+					<th data-options="field:'name'" width="300">项目名称</th>
+					<th data-options="field:'size'" width="300" align="right">补助资金</th>
+					<th data-options="field:'date'" width="300">时间</th>
+				</tr>
+			</thead>
+		</table>
+		
+		<div id="kuang" class="easyui-dialog" title="项目详情" style="width:600px;height:500px;"   
         data-options="iconCls:'icon-save',resizable:true,modal:true" closed="true">
 			<form method="post">
 					<table cellpadding="5" style="margin: 0 auto">
@@ -139,17 +119,17 @@
 					</div>
 				</form>
 		</div>
-		
 		<script>
 			function closeDialog(){
 				$("#kuang").dialog("close")
 			}
-			$("#tb").datagrid({
-				onClickRow:function(index,row){
+			$("#tb").treegrid({
+				onClickRow:function(row){
 					console.log(row)
 					$("#kuang").dialog("open")
 				}
 			})
 		</script>
-</body>
+	</body>
+
 </html>
