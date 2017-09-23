@@ -144,7 +144,7 @@
                         "state": "open",
                         "iconCls": "3",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshishi/xiangmujindutianxie.jsp"
                         }
                     },
                     {
@@ -162,7 +162,7 @@
                         "state": "open",
                         "iconCls": "3",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshishi/xiangmuyanshou.jsp"
                         }
                     },
                     {
@@ -276,7 +276,7 @@
                         "state": "open",
                         "iconCls": "6",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/shangxingbaosong.html"
                         }
                     },
                     {
@@ -285,7 +285,7 @@
                         "state": "open",
                         "iconCls": "6",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/yibaosongxinxi.html"
                         }
                     }
                 ]
@@ -314,7 +314,7 @@
                         "state": "open",
                         "iconCls": "7",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XTguanli/leibieshezhi.jsp"
                         }
                     },
                     {
