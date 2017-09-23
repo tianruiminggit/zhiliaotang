@@ -97,7 +97,7 @@
                         "state": "open",
                         "iconCls": "2",
                         "attributes": {
-                            "authPath": ""
+                            "authPath": "../jsp/XMshenbao/shujubeifen.jsp"
                         }
                     },
                     {
