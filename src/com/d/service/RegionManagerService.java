@@ -41,5 +41,12 @@ public interface RegionManagerService {
 	 * @return
 	 */
 	int insertRegion(Map<String, Object> map);
+	/**
+	 * 生成地区树节点
+	 * @param map
+	 * @return
+	 */
 	List<RegionTreeNode> tree(Map<String, Object> map);
+	void updateRegion(Map<String, Object> map);
+	void deleteRegion(Map<String, Object> map);
 }

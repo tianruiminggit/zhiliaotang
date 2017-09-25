@@ -32,4 +32,6 @@ public interface RegionManagerDao {
 	public List<City> getListCounty(County c);
 	public int insertRegion(Map<String, Object> map);
 	public List<RegionTreeNode> tree(Map<String, Object> map);
+	public void updateRegion(Map<String, Object> map);
+	public void deleteRegion(Map<String, Object> map);
 }

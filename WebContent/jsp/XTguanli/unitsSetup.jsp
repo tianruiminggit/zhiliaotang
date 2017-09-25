@@ -47,6 +47,7 @@
 					</div>
 						<div style="padding:10px 60px 20px 60px">
 							<form id="ff" method="get" action="../../region/insertRegion.do" >
+								<input type="hidden" id="hideId" name="hideId"/>
 								<table cellpadding="5">
 									<tr id="select_type">
 										<td>添加类别:</td>
@@ -100,81 +101,11 @@
 					
 					
 					<script>
-					function myhide(){
+					/* function myhide(){
 						$("#tree_nav").tree({
 							url:"../../region/regionTree.do",
-							onClick:function(node){
-								if("e"==node.id[2]){
-									$.ajax({
-										type:"get",
-										url:"../../region/getProvince.do",
-										dataType:"json",
-										data:{"province_id":node.id},
-										success:function(result){
-											$('#ptext').textbox({
-												"value":result[0].province_name,
-												"readonly":true
-											})	
-											$("#province").show();
-											$("#select_type").hide();
-											$("#type").val("tb_province");
-											console.log($("#type").val());
-											$("#p_select").hide();
-											$("#city").hide();
-											$("#c_select").hide();
-											$("#county").hide(); 
-											
-										}
-									});
-								}
-								if("i"==node.id[2]){
-									$.ajax({
-										type:"get",
-										url:"../../region/getCity.do",
-										dataType:"json",
-										data:{"city_id":node.id},
-										success:function(result){
-											$('#ctext').textbox({
-												"value":result[0].city_name,
-												"readonly":true
-											})	
-											$("#province").hide();
-											$("#select_type").hide();
-											$("#type").val("tb_city");
-											console.log($("#type").val());
-											$("#p_select").hide();
-											$("#city").show();
-											$("#c_select").hide();
-											$("#county").hide(); 
-											
-										}
-									});
-								}
-								if("a"==node.id[2]){
-									$.ajax({
-										type:"get",
-										url:"../../region/getCounty.do",
-										dataType:"json",
-										data:{"county_id":node.id},
-										success:function(result){
-											$('#cctext').textbox({
-												"value":result[0].county_name,
-												"readonly":true
-											})	
-											$("#province").hide();
-											$("#select_type").hide();
-											$("#type").val("tb_couty");
-											console.log($("#type").val());
-											$("#p_select").hide();
-											$("#city").hide();
-											$("#c_select").hide();
-											$("#county").show(); 
-											
-										}
-									});
-								}
-							}
-						});
+						
+						}); */
 						function myhide(){
 							$("#province").hide();
 							$("#p_select").hide();
@@ -182,9 +113,81 @@
 							$("#c_select").hide();
 							$("#county").hide();
 							$("#tree_nav").tree({
-								url:"../../region/regionTree.do"
+								url:"../../region/regionTree.do",
+									onClick:function(node){
+										$("#hideId").val(node.id);										
+										if("e"==node.id[2]){
+											$.ajax({
+												type:"get",
+												url:"../../region/getProvince.do",
+												dataType:"json",
+												data:{"province_id":node.id},
+												success:function(result){
+													$('#ptext').textbox({
+														"value":result[0].province_name,
+														"readonly":true
+													})	
+													$("#province").show();
+													$("#select_type").hide();
+													$("#type").val("tb_province");
+													console.log($("#type").val());
+													$("#p_select").hide();
+													$("#city").hide();
+													$("#c_select").hide();
+													$("#county").hide(); 
+													
+												}
+											});
+										}
+										if("i"==node.id[2]){
+											$.ajax({
+												type:"get",
+												url:"../../region/getCity.do",
+												dataType:"json",
+												data:{"city_id":node.id},
+												success:function(result){
+													$('#ctext').textbox({
+														"value":result[0].city_name,
+														"readonly":true
+													})	
+													$("#province").hide();
+													$("#select_type").hide();
+													$("#type").val("tb_city");
+													console.log($("#type").val());
+													$("#p_select").hide();
+													$("#city").show();
+													$("#c_select").hide();
+													$("#county").hide(); 
+													
+												}
+											});
+										}
+										if("a"==node.id[2]){
+											$.ajax({
+												type:"get",
+												url:"../../region/getCounty.do",
+												dataType:"json",
+												data:{"county_id":node.id},
+												success:function(result){
+													$('#cctext').textbox({
+														"value":result[0].county_name,
+														"readonly":true
+													})	
+													$("#province").hide();
+													$("#select_type").hide();
+													$("#type").val("tb_county");
+													console.log($("#type").val()); 
+													$("#p_select").hide();
+													$("#city").hide();
+													$("#c_select").hide();
+													$("#county").show(); 
+													
+												}
+											});
+										}
+									}
 							})
-						} 
+						
 						}
 						function submitForm() {
 							$('#ff').submit();
@@ -267,18 +270,27 @@
 							});
 						}
 					$("#btn_add").click(function(){
-						$("input").textbox({
+						$("input[type=text]").textbox({
 							"value":"",
 							"readonly":false
 						});
 						$('#ff').form('reset');
 						$("#select_type").show();
+						$("#ff").attr("action","../../region/insertRegion.do")
 						no_select();
 					})
 					$("#btn_update").click(function(){
-						$("input").textbox({
+						$("input[type=text]").textbox({
 							"readonly":false
 						});
+						$("#ff").attr("action","../../region/update.do")
+						console.log($("#ff").attr("action"))
+					})
+					$("#btn_delete").click(function(){
+						$("input[type=text]").textbox({
+							"readonly":true
+						});
+						$("#ff").attr("action","../../region/delete.do")
 					})
 					</script>
 
