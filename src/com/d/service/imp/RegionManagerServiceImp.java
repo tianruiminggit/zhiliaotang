@@ -32,13 +32,18 @@ public class RegionManagerServiceImp implements RegionManagerService {
 	}
 	@Override
 	public int insertRegion(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return regionDao.insertRegion(map);
 	}
 	@Override
 	public List<RegionTreeNode> tree(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return regionDao.tree(map);
 	}
-
+	@Override
+	public void updateRegion(Map<String, Object> map) {
+		regionDao.updateRegion(map);
+	}
+	@Override
+	public void deleteRegion(Map<String, Object> map) {
+		regionDao.deleteRegion(map);
+	}
 }

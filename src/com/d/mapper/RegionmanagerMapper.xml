@@ -64,7 +64,7 @@
 	               province_name = #{province_name},
 	           </if>
 	       </set>
-	       where province_id =#{province_id}
+	       where province_id =#{id}
 	    </if>
 	    
 	    <if test="tablename =='tb_city'.toString() ">
@@ -74,7 +74,7 @@
 	               city_name = #{city_name},
 	           </if>
 	       </set>
-	       where city_id =#{city_id}
+	       where city_id =#{id}
 	    </if>
 	    
 	    <if test="tablename =='tb_county'.toString() ">
@@ -84,9 +84,21 @@
 	               county_name = #{county_name},
 	           </if>
 	       </set>
-	       where county_id =#{county_id}
+	       where county_id =#{id}
 	    </if>
 	</update>
+	
+	<delete id="deleteRegion" parameterType="java.util.HashMap">
+	    <if test="tablename =='tb_province'.toString() ">
+	      delete from tb_province where province_id = #{id}
+	    </if>
+	    <if test="tablename =='tb_city'.toString() ">
+	      delete from tb_city where city_id = #{id}
+	    </if>
+	    <if test="tablename =='tb_county'.toString() ">
+	       delete from tb_county where county_id = #{id}
+	    </if>
+	</delete>
 </mapper>
 
 

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -89,17 +90,17 @@ public class RegionManagerController {
 		Map<String, Object> map = new HashMap<>();
 		map.put("tablename", table);
 		if(province_id==null||province_id==""){
-			province_id = "sheng"+pnum;
+			province_id = "sheng"+(pnum+1);
 		}
 		map.put("province_id", province_id);
 		map.put("province_name", province_name);
 		if(city_id==null||city_id==""){
-			city_id = "shi"+cnum;
+			city_id = "shi"+(cnum+1);
 		}
 		map.put("city_id", city_id);
 		map.put("city_name", city_name);
 		if(county_id==null||county_id==""){
-			county_id = "xian"+ccnum;
+			county_id = "xian"+(ccnum+1);
 		}
 		map.put("county_id", county_id);
 		map.put("county_name", county_name);
@@ -135,9 +136,34 @@ public class RegionManagerController {
 		return list;
 		
 	}
-	
-	public String updateRegion(String table,String province_id,String province_name,String city_id,String city_name,String county_id,String county_name){
-		return null;
+	/**
+	 * 更新数据
+	 * @param table
+	 * @param province_name
+	 * @param city_name
+	 * @param county_name
+	 * @param hideId
+	 * @return
+	 */
+	@RequestMapping("/update")
+	public String updateRegion(String table,String province_name,String city_name,String county_name,String hideId){
+		Map<String, Object> map = new HashMap<>();
+		map.put("tablename", table);
+		map.put("id", hideId);
+		map.put("province_name", province_name);
+		map.put("city_name", city_name);
+		map.put("county_name", county_name);
+		regionService.updateRegion(map);
+		return "XTguanli/unitsSetup";
+		
+	}
+	@RequestMapping("/delete")
+	public String deleteRegion(String table,String hideId){
+		Map<String, Object> map = new HashMap<>();
+		map.put("tablename", table);
+		map.put("id", hideId);
+		regionService.deleteRegion(map);
+		return "XTguanli/unitsSetup";
 		
 	}
 }
