@@ -27,7 +27,7 @@
 					<tr>
 						<td>选择地区:</td>
 						<td><select class="easyui-combobox" name="province">
-								<option value="四川省">四川省</option>
+								<option value="四川省">四川省1</option>
 								<option value="河北省">河北省</option>
 						</select> <select class="easyui-combobox" name="city">
 								<option value="四川省">四川省</option>
