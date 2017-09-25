@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.d.dao.leibieshezhiDao">
-	<select id="getlistProjectkind" resultType="com.d.entityAll.leibieshezhientity">
+	<select id="getlistProjectkind1" resultType="com.d.entityAll.leibieshezhientity">
 		SELECT  tb_kindchild.child_id,tb_kindchild.child_name,tb_kindchild.kind_id FROM tb_kindchild, tb_projectkind 
 WHERE  
  tb_kindchild.kind_id = tb_projectkind.kind_id
 	</select>
 	
 	<!-- 查询主类别（父节点） -->
-	<select id="s" resultType="com.d.entity.Projectkind">
+	<select id="getlistProjectkind" resultType="com.d.entity.Projectkind">
 		SELECT * FROM tb_projectkind		
 	</select>
 	
@@ -25,17 +25,41 @@ WHERE
 		 
 	</select>
 	
-	<select id="tree" resultType="com.d.Tree.TreeNode" parameterType="java.util.HashMap">
-		
+	<!-- 生成树的查询方法 -->	
+	<select id="tree" resultType="com.d.Tree.TreeNode" parameterType="java.util.HashMap">		
 		<if test="tablename =='tb_projectkind'.toString() ">			
-	SELECT  kind_id AS id ,kind_name AS text FROM  tb_projectkind		
+			SELECT  kind_id AS id ,kind_name AS text FROM  tb_projectkind		
 		</if>
 		
-		<if test="tablename=='tb_kindchild'.toString()">			
-	 SELECT  child_id AS id,child_name AS TEXT FROM tb_kindchild  where kind_id = #{id}
+		<if test="tablename=='tb_kindchild'.toString()">	
+		<!-- id要传父类的id  这样才能查询出所有父类下的子类 -->		
+			 SELECT  child_id AS id,child_name AS TEXT FROM tb_kindchild  where kind_id = #{id}
 		</if>
 	
 	</select>
+	
+	<!-- 插入语句 -->
+	<insert id="insertprojectkind" parameterType="java.util.HashMap">
+		<if test="tablename=='tb_projectkind'">	
+		<!-- 参数值之间用#{}就可以得到，数据从前天传过来时就已经封装好了	 -->	
+		INSERT INTO tb_projectkind (kind_id,kind_name) VALUES (#{kind_id},#{kind_name});
+		</if>
+		<if test="tablename=='tb_kindchild'">		
+		INSERT INTO tb_kindchild (child_id,child_name,kind_id) VALUES (#{child_id},#{child_name},#{kind_id});
+		</if>
+	</insert>
+	<!-- 修改数据语句 -->
+	<update id="updatetable">
+	<!-- 当传过来的表为父表时 -->
+	<if test="tablename=='tb_projectkind'">
+		UPDATE  tb_projectkind SET kind_name =#{kind_name} WHERE kind_id=#{kind_id}
+	</if>
+	<if test="tablename=='tb_kindchild'">
+		UPDATE  tb_kindchild SET child_name =#{kind_name} WHERE child_id=#{child_id}
+	</if>
+	
+	</update>
+	
 	
 	
 </mapper>

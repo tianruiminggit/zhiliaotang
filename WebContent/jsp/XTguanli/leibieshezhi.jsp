@@ -10,10 +10,21 @@
 		<!--引入easy UI框架    -->
 		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
 		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/icon.css">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/demo.css">
+		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/demo/demo.css">
 		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
 		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
-		
+		<style type="text/css">
+		/* 	#insertdiv{
+			display: inline-block;
+			position: absolute;
+			/* display: none; */
+		}
+		#updatediv{
+			display: inline-block;
+			display: none;
+			position: absolute;
+		} */
+		</style>
 	</head>
 
 	<body onload="doAjax()">
@@ -30,19 +41,20 @@
 				<!--图标-->
 				<div id="tb" style="padding:5px;height:auto">
 					<div style="margin-bottom:5px">
+						<input type="hidden" id="hidevalue">
 						<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加分类</a>
-						<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="xiugai()">修改分类</a>
-						<!--<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true"></a>
-						<a href="#" class="easyui-linkbutton" iconCls="icon-cut" plain="true"></a>-->
+						<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="xiugai()"  id="XG"  >修改分类</a>
 						<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除分类</a>
 					</div>
-						<div style="padding:10px 60px 20px 60px">
-							<form id="ff" method="post" action="../../projectKindController/">
+					
+					<!-- 添加分类 -->
+						<div style="padding:10px 60px 20px 60px" id="insertdiv">				
+							<form id="ff" method="get" action="../../projectKindController/insert.do" >
 								<table cellpadding="5">
 									<tr id="chosetypeTr">
 										<td>添加位置:</td>
 										<td>
-											<select class="" name="language" id="chosetype" onchange="choseType()">
+											<select class="" name="table" id="chosetype" onchange="choseType()">
 												<option value="">--请选择--</option>
 												<option value="tb_projectkind">上级</option>
 												<option value="tb_kindchild">下级</option>														
@@ -52,7 +64,7 @@
 									
 									<tr id="shangjimuluText">
 										<td>添加分类名称1:</td>
-										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
+										<td><input class="easyui-textbox" type="text" name="kind_name" data-options="required:true"></input>
 										</td>
 									</tr>
 									<!--
@@ -63,15 +75,22 @@
 									<tr id="xiajimuluchose">
 										<td>一级目录：</td>
 										<td>
-											<select id="p-select" name="p-select" onchange="chosekind()">
-												<option>农牧业</option>
-												<option>水利水电</option>
+											<select id="p-select" name="kind_id" onchange="chosekind()">
 											</select>											
 										</td>
 									</tr>
+									<tr id="zhenxiajichose">
+										<td>二级目录：</td>
+										<td>
+											<select id="k-select" name="child_id" onchange=chosexiaji()>
+											</select>											
+										</td>
+									</tr>
+									
+									
 									<tr id="xiajimuluText"> 
 										<td>添加分类名称2:</td>
-										<td><input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>
+										<td><input id="x_zilei" class="easyui-textbox" type="text" name="child_name" data-options="required:true"></input>
 										</td>
 									</tr>
 									<!--
@@ -82,9 +101,10 @@
 									<tr id="xiugaiText">
 										<td>修改内容：</td>
 										<td>
-											<input class="easyui-textbox" type="text" name="subject" data-options="required:true"></input>						
+											<input class="easyui-textbox" type="text" name="kind_name" data-options="required:true"></input>						
 										</td>
 									</tr>
+									
 								</table>
 							</form>
 							<div style="text-align:left;padding:5px">
@@ -92,30 +112,51 @@
 								<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">重写</a>
 							</div>
 						</div>
+					<!-- 修改分类 -->
+
+					
 					
 				</div>	
 				</div>
 										
 					<script>
-						function submitForm() {
-							$('#ff').form('submit');
-						}
-
-						function clearForm() {
-							$('#ff').form('clear');
-						}						
+	/* ===============================插入数据的JS代码=========================================== */
+	
 						/**
 						  * 选择类型下拉框，当下拉框中的值是否改变时的判断
 						  */
 						function choseType(){						
-							var chosetype1=$("#chosetype").val();//获得选择下拉框的节点设置的值
-							if("tb_projectkind"==chosetype1){//如果值等于上级option的值  							
-								showchoseshangji();
+							var chosetype1=$("#chosetype").val();//获得选择下拉框的节点设置的值 							 
+							  chosetype3=$("#hidevalue").val()
+	/* ==================================如果是修改界面======================================================= */
+							 if(chosetype3=="XG"){
+								console.log("jinru")
+								if("tb_projectkind"==chosetype1){//如果值等于上级option的值  																	
+									$("#xiajimuluchose").show();//显示下级目录的选择框
+									chashangji();//调用查询上级目录的方法 
+									$("#xiugaiText").show();
+								}
+								if("tb_kindchild"==chosetype1){//如果值等于下级option的值时
+									$("#xiajimuluchose").show();//显示上级级目录的选择框
+									chashangji();//调用查询上级目录的方法 
+									/* chosekind();//调用上级目录选择改变的方法
+									 */
+								
+									//判断里面的值
+									$("#xiugaiText").show();
+								}								
 							}
-							if("tb_kindchild"==chosetype1){//如果值等于下级option的值时
-								showAll();
+							/* =========== 如果是增加界面===================== */
+							 else{ 
+								if("tb_projectkind"==chosetype1){//如果值等于上级option的值  							
+									showchoseshangji();									
+								}
+								if("tb_kindchild"==chosetype1){//如果值等于下级option的值时
+									console.log("插入下级选择")
+									showAll();
+								}								
+							 } 
 							}
-						}
 						/**
 						 * 选择上级目录
 						 * 只显示上级目录添加的文本框
@@ -126,57 +167,103 @@
 							$("#xiajimuluText").hide();
 							$("#chosetypeTr").show();
 							$("#shangjimuluText").show();
-							$("#xiugaiText").hide();
-							
-						}
-						
-						function showAll(){
-							
-							$("#xiajimuluchose").show();
-							$("#xiajimuluText").show();
-							$("#chosetypeTr").show();
-							$("#shangjimuluText").hide();
-							$("#xiugaiText").hide();
+							$("#xiugaiText").hide();							
+						}						
+						function showAll(){							
+							$("#xiajimuluchose").show();//显示下级目录的选择框
+							$("#xiajimuluText").show();//显示下级目录的输入框
+							$("#chosetypeTr").show();//显示选择上下级的下拉框
+							$("#shangjimuluText").hide();//隐藏上级目录的输入框
+							$("#xiugaiText").hide();//隐藏修改下级输入框
+							$("#zhenxiajichose").hide();//隐藏二级目录
+							 chashangji();//调用查询上级目录的方法 
 						}
 						
 						function yinchang(){
-							$("#xiajimuluchose").hide();
-							$("#xiajimuluText").hide();
-							$("#chosetypeTr").show();
-							$("#shangjimuluText").hide();
-							$("#xiugaiText").hide();
+							$("#xiajimuluchose").hide();//隐藏下级选择框
+							$("#xiajimuluText").hide();//隐藏下级输入框
+							$("#chosetypeTr").show();//显示选择上下级下拉框
+							$("#shangjimuluText").hide();//隐藏上级目录的输入框
+							$("#xiugaiText").hide();//隐藏修改的输入框
+							$("#zhenxiajichose").hide();//隐藏二级目录
+						}
+/* =======================================修改的JS代码=================================================== */	
+				
+						function  xiugai(){
+							$("#hidevalue").val("XG");
+							$("#xiajimuluchose").show();//显示下级目录的选择框
+							$("#xiugaiText").show();
+							//修改调整路径  form表单
+							var at="../../projectKindController/updatetable.do";
+							$("#ff").attr("action",at);
+							console.log($("#ff").attr("action",at));
+							yinchang();						
 						}
 						
-						function  xiugai(){
-							console.log("进入修改页面")
-							yinchang();//调用开始进入页面显示文本框的方法
-							var chosetype1=$("#chosetype").val();//获得选择下拉框的节点设置的值
-							if("tb_projectkind"==chosetype1){//如果值等于上级option的值  	查询显示上级的字段						
-								chashangji();
-							}
-							if("tb_kindchild"==chosetype1){//如果值等于下级option的值时
-								chaxiaji();
-							}
-						}
 						//查上级的所有信息
 						function chashangji(){
+							$("#p-select").empty;//清空下拉框中的内容
+							$("#p-select").append("<option value=''>--请选择--</option>");
+							$.ajax({
+								type:"get",
+								url:"../../projectKindController/selectprojectkind.do",
+								success:function(result){
+									
+									for(var i=0;i<result.length;i++){
+										var json = result[i];
+										$("#p-select").append("<option value=" + json.kind_id+">"+json.kind_name+"</option");
+									}
+								}
+							});
 							
 						}
-						//查下级的所有信息
 						function chaxiaji(){
+							console.log($("#p-select").val())
+							$("#k-select").empty;//清空下拉框中的内容
+							$("#k-select").append("<option value=''>--请选择--</option>");
+							$.ajax({
+								type:"get",
+								url:"../../projectKindController/selectchild.do?kind_id="+$("#p-select").val(),
+								success:function(result){
+									
+									for(var i=0;i<result.length;i++){
+										var json = result[i];
+										$("#k-select").append("<option value=" + json.child_id+">"+json.child_name+"</option");
+									}
+								}
+							});													
+						}
+						//一级目录的值改变时
+						function chosekind(){
+							var chosetype5=$("#p-select").val();//获得一级下拉框的节点设置的值 
+							//当上级目录框中的值改变时 显示下级目录选择框，并查询子表的数据
+							console.log("选择一级目录的值为："+chosetype5)
+							if(chosetype5!=null ||chosetype !=""){
+								//显示下级目录选择框
+								chaxiaji();
+								$("#zhenxiajichose").show();//显示下级的目录
+								
+							}
 							
 						}
 						
 						
+						
+					
+						function submitForm() {
+							$('#ff').submit();
+						}
+
+						function clearForm() {
+							$('#ff').form('reset');
+						}
 						
 						
 						function doAjax(){
 							yinchang();//隐藏右边刚加载页面不需要显示部分的方法
-							console.log("dojax")
+							console.log("dojax");
 							$("#mytree").tree({
-							 	/* data:  [{"id":1,"state":"open","children":[{"id":11,"pid":1,"text":"扩累畜牧子类","state":"closed","children":[]},{"id":12,"pid":1,"text":"测试子类1","state":"closed","children":[]},{"id":13,"pid":1,"text":"测试子类2","state":"closed","children":[]}]},{"id":1,"state":"open","children":[{"id":11,"pid":1,"text":"扩累畜牧子类","state":"closed","children":[]},{"id":12,"pid":1,"text":"测试子类1","state":"closed","children":[]},{"id":13,"pid":1,"text":"测试子类2","state":"closed","children":[]}]},{"id":1,"state":"open","children":[{"id":11,"pid":1,"text":"扩累畜牧子类","state":"closed","children":[]},{"id":12,"pid":1,"text":"测试子类1","state":"closed","children":[]},{"id":13,"pid":1,"text":"测试子类2","state":"closed","children":[]}]},{"id":2,"state":"open","children":[{"id":21,"pid":2,"text":"公路子类","state":"closed","children":[]}]}]
-
- */								
+								
 							 url:"../../projectKindController/tree.do" 
 								/* /*  loadData:function(data){ */
 									/* var json = eval(data);
