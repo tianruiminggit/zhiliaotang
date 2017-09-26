@@ -44,7 +44,7 @@
 						<input type="hidden" id="hidevalue">
 						<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加分类</a>
 						<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="xiugai()"  id="XG"  >修改分类</a>
-						<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除分类</a>
+						<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="shanchu()">删除分类</a>
 					</div>
 					
 					<!-- 添加分类 -->
@@ -128,6 +128,7 @@
 						function choseType(){						
 							var chosetype1=$("#chosetype").val();//获得选择下拉框的节点设置的值 							 
 							  chosetype3=$("#hidevalue").val()
+						
 	/* ==================================如果是修改界面======================================================= */
 							 if(chosetype3=="XG"){
 								console.log("jinru")
@@ -139,13 +140,31 @@
 								if("tb_kindchild"==chosetype1){//如果值等于下级option的值时
 									$("#xiajimuluchose").show();//显示上级级目录的选择框
 									chashangji();//调用查询上级目录的方法 
-									/* chosekind();//调用上级目录选择改变的方法
-									 */
+								
 								
 									//判断里面的值
 									$("#xiugaiText").show();
 								}								
 							}
+					/* =============删除================= */
+							 else if(chosetype3=="SC"){
+							
+									if("tb_projectkind"==chosetype1){//如果值等于上级option的值  	
+										 console.log("进入删除")
+										$("#xiajimuluchose").show();//显示下级目录的选择框
+										chashangji();//调用查询上级目录的方法 
+										 
+										$("#xiugaiText").hide();
+									}
+									if("tb_kindchild"==chosetype1){//如果值等于下级option的值时
+										$("#xiajimuluchose").show();//显示上级级目录的选择框
+										chashangji();//调用查询上级目录的方法 
+										$("#zhenxiajichose").show();//显示二级目录
+										
+										//判断里面的值
+										$("#xiugaiText").hide();
+									}	
+							 }
 							/* =========== 如果是增加界面===================== */
 							 else{ 
 								if("tb_projectkind"==chosetype1){//如果值等于上级option的值  							
@@ -199,6 +218,19 @@
 							console.log($("#ff").attr("action",at));
 							yinchang();						
 						}
+						/* =======删除代码 ========*/
+							function shanchu(){
+							console.log("shanchu")
+								$("#hidevalue").val("SC");
+								$("#xiajimuluchose").show();//显示下级目录的选择框
+								$("#xiugaiText").show();//显示修改输入框
+								//修改调整路径  form表单
+								var at="../../projectKindController/delete.do";
+								$("#ff").attr("action",at);
+								console.log($("#ff").attr("action",at));
+								yinchang();	
+							}
+													
 						
 						//查上级的所有信息
 						function chashangji(){
@@ -238,10 +270,18 @@
 							var chosetype5=$("#p-select").val();//获得一级下拉框的节点设置的值 
 							//当上级目录框中的值改变时 显示下级目录选择框，并查询子表的数据
 							console.log("选择一级目录的值为："+chosetype5)
+							 chosetype33=$("#hidevalue").val();
 							if(chosetype5!=null ||chosetype !=""){
 								//显示下级目录选择框
 								chaxiaji();
-								$("#zhenxiajichose").show();//显示下级的目录
+								if("SC"!=chosetype33){
+									$("#zhenxiajichose").show();//显示下级的目录
+								}else{
+									console.log("进入删除的判断")
+								}
+								
+								
+								
 								
 							}
 							

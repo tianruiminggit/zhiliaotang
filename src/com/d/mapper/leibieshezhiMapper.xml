@@ -59,7 +59,23 @@ WHERE
 	</if>
 	
 	</update>
+	<delete id="delete1">
+	<!-- 删除子表 -->
+		<if test="tablename=='tb_kindchild'">
+			DELETE FROM tb_kindchild WHERE child_id = #{child_id}
+		</if>
+	<!-- 删除父表  但要先删除子表 -->
+	<!-- 	<if test="tablename=='tb_projectkind'">
+			DELETE FROM tb_kindchild WHERE child_id = #{child_id}
+		
 	
+		</if> -->
+		<if test="tablename=='tb_projectkind'">
+	
+			DELETE FROM tb_projectkind WHERE kind_id = #{kind_id}
+	
+		</if>
+	</delete>
 	
 	
 </mapper>

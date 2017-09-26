@@ -38,4 +38,10 @@ public interface leibeishezhiService {
 	 */
 	
 	public int updatetable(Map<String,Object> map);
+	/**
+	 * É¾³ıÊı¾İ
+	 * @param map
+	 * @return
+	 */
+	public int delete1(Map<String,Object> map);
 }

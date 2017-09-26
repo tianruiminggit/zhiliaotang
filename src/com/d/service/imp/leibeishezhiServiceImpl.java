@@ -111,6 +111,15 @@ public class leibeishezhiServiceImpl  implements leibeishezhiService{
 		// TODO Auto-generated method stub
 		return leibieshezhi.updatetable(map);
 	}
+	/**
+	 * É¾³ýÊý¾Ý
+	 */
+	@Override
+	public int delete1(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+			
+		return leibieshezhi.delete1(map);
+	}
 
 	
 }

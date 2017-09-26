@@ -52,4 +52,12 @@ public interface leibieshezhiDao {
 		 * @return
 		 */
 		public int updatetable(Map<String,Object> map);
+		/**
+		 * 
+		 * É¾³ı¹¦ÄÜ
+		 * @param map
+		 * @return
+		 */
+		public int delete1(Map<String,Object> map);
+		
 }
