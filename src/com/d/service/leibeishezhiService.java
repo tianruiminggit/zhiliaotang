@@ -44,4 +44,7 @@ public interface leibeishezhiService {
 	 * @return
 	 */
 	public int delete1(Map<String,Object> map);
+	
+	//删除同一个父类下的所有子类
+			public int deletesunAll(Map<String,Object> map);
 }

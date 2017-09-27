@@ -120,6 +120,11 @@ public class leibeishezhiServiceImpl  implements leibeishezhiService{
 			
 		return leibieshezhi.delete1(map);
 	}
+	@Override
+	public int deletesunAll(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return leibieshezhi.deletesunAll(map);
+	}
 
 	
 }

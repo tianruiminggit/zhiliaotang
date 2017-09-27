@@ -161,18 +161,22 @@ public class projectKindController {
 		return "XTguanli/leibieshezhi";
 	}
 	@RequestMapping("/delete")
-	public String delete(String table,Integer kind_id,String kind_name,Integer child_id,String child_name){
+	public String delete(String table,Integer kind_id,String kind_name,Integer child_id,String child_name,String panduan){
 		Map<String,Object> map = new HashMap<>();
 		map.put("tablename", table);
 		map.put("kind_id", kind_id);
 		map.put("kind_name", kind_name);
 		map.put("child_id", child_id);
 		map.put("child_name", child_name);
-		int aa = leibeishezhi.delete1(map);
-		
+		if(panduan.equals("PD")){
+			System.out.println("进入删除判断");
+			//删除同及父类中的子类
+			int bb=leibeishezhi.deletesunAll(map);
+		}
+		//删除父类
+		System.out.println("删除父类");
+		int aa = leibeishezhi.delete1(map);	
 		return "XTguanli/leibieshezhi";
 	}
-	
-	
 	
 }

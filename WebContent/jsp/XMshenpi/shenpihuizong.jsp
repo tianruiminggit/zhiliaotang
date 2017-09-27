@@ -5,7 +5,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="/declaration/jquery-easyui-1.5.3/themes/default/easyui.css">
 		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/icon.css">
 		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/demo/demo.css">
 		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.min.js"></script>

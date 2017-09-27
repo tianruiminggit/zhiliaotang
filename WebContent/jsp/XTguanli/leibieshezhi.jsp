@@ -8,11 +8,11 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<!--引入easy UI框架    -->
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/icon.css">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/demo/demo.css">
-		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
-		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/declaration/jquery-easyui-1.5.3/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="/declaration/jquery-easyui-1.5.3/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="/declaration/jquery-easyui-1.5.3/demo/demo.css">
+		<script type="text/javascript" src="/declaration/jquery-easyui-1.5.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/declaration/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 		<style type="text/css">
 		/* 	#insertdiv{
 			display: inline-block;
@@ -32,8 +32,7 @@
 
 		<div style="margin:20px 0;"></div>
 		<div class="easyui-layout" style="width:300px;height:700px;display:inline-block">
-			<ul id="mytree"></ul>
-			
+			<ul id="mytree"></ul>		
 		</div>
 <!--右边内容-->
 			<div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'" style="height: 700px;display:inline-block;vertical-align:top">
@@ -41,7 +40,7 @@
 				<!--图标-->
 				<div id="tb" style="padding:5px;height:auto">
 					<div style="margin-bottom:5px">
-						<input type="hidden" id="hidevalue">
+						<input type="hidden" id="hidevalue" >
 						<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">添加分类</a>
 						<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="xiugai()"  id="XG"  >修改分类</a>
 						<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="shanchu()">删除分类</a>
@@ -50,6 +49,7 @@
 					<!-- 添加分类 -->
 						<div style="padding:10px 60px 20px 60px" id="insertdiv">				
 							<form id="ff" method="get" action="../../projectKindController/insert.do" >
+								<input type="hidden" id="panduan" name="panduan">
 								<table cellpadding="5">
 									<tr id="chosetypeTr">
 										<td>添加位置:</td>
@@ -221,6 +221,8 @@
 						/* =======删除代码 ========*/
 							function shanchu(){
 							console.log("shanchu")
+								/* $("#panduan").val("PD"); */
+							
 								$("#hidevalue").val("SC");
 								$("#xiajimuluchose").show();//显示下级目录的选择框
 								$("#xiugaiText").show();//显示修改输入框
@@ -267,6 +269,8 @@
 						}
 						//一级目录的值改变时
 						function chosekind(){
+							//用于判断是删除上级用的
+						$("#panduan").val("PD");							
 							var chosetype5=$("#p-select").val();//获得一级下拉框的节点设置的值 
 							//当上级目录框中的值改变时 显示下级目录选择框，并查询子表的数据
 							console.log("选择一级目录的值为："+chosetype5)
@@ -279,10 +283,7 @@
 								}else{
 									console.log("进入删除的判断")
 								}
-								
-								
-								
-								
+															
 							}
 							
 						}
