@@ -10,15 +10,15 @@
 <!--引入easy UI框架    -->
 
 <link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
+	href="/declaration/jquery-easyui-1.5.3/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/themes/icon.css">
+	href="/declaration/jquery-easyui-1.5.3/themes/icon.css">
 <link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/demo.css">
+	href="/declaration/jquery-easyui-1.5.3/demo/demo.css">
 <script type="text/javascript"
-	src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
+	src="/declaration/jquery-easyui-1.5.3/jquery.min.js"></script>
 <script type="text/javascript"
-	src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	src="/declaration/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 
 
 
@@ -46,7 +46,7 @@
 						<a id="btn_delete" href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除分类</a>
 					</div>
 						<div style="padding:10px 60px 20px 60px">
-							<form id="ff" method="get" action="../../region/insertRegion.do" >
+							<form id="ff" method="post" action="/declaration/region/insertRegion.do" >
 								<input type="hidden" id="hideId" name="hideId"/>
 								<table cellpadding="5">
 									<tr id="select_type">
@@ -103,7 +103,7 @@
 					<script>
 					/* function myhide(){
 						$("#tree_nav").tree({
-							url:"../../region/regionTree.do",
+							url:"/declaration/region/regionTree.do",
 						
 						}); */
 						function myhide(){
@@ -113,13 +113,13 @@
 							$("#c_select").hide();
 							$("#county").hide();
 							$("#tree_nav").tree({
-								url:"../../region/regionTree.do",
+								url:"/declaration/region/regionTree.do",
 									onClick:function(node){
 										$("#hideId").val(node.id);										
 										if("e"==node.id[2]){
 											$.ajax({
 												type:"get",
-												url:"../../region/getProvince.do",
+												url:"/declaration/region/getProvince.do",
 												dataType:"json",
 												data:{"province_id":node.id},
 												success:function(result){
@@ -142,7 +142,7 @@
 										if("i"==node.id[2]){
 											$.ajax({
 												type:"get",
-												url:"../../region/getCity.do",
+												url:"/declaration/region/getCity.do",
 												dataType:"json",
 												data:{"city_id":node.id},
 												success:function(result){
@@ -165,7 +165,7 @@
 										if("a"==node.id[2]){
 											$.ajax({
 												type:"get",
-												url:"../../region/getCounty.do",
+												url:"/declaration/region/getCounty.do",
 												dataType:"json",
 												data:{"county_id":node.id},
 												success:function(result){
@@ -246,7 +246,7 @@
 							$("#province_id").append("<option value=''>请选择</option>")
 							$.ajax({
 								type:"get",
-								url:"../../region/getProvince.do",
+								url:"/declaration/region/getProvince.do",
 								success:function(result){
 									for(var i=0;i<result.length;i++){
 										var json = result[i];
@@ -260,7 +260,7 @@
 							$("#city_id").append("<option value=''>请选择</option>")
 							$.ajax({
 								type:"get",
-								url:"../../region/getCity.do?province_id="+$("#province_id").val(),
+								url:"/declaration/region/getCity.do?province_id="+$("#province_id").val(),
 								success:function(result){
 									for(var i=0;i<result.length;i++){
 										var json = result[i];
@@ -276,21 +276,21 @@
 						});
 						$('#ff').form('reset');
 						$("#select_type").show();
-						$("#ff").attr("action","../../region/insertRegion.do")
+						$("#ff").attr("action","/declaration/region/insertRegion.do")
 						no_select();
 					})
 					$("#btn_update").click(function(){
 						$("input[type=text]").textbox({
 							"readonly":false
 						});
-						$("#ff").attr("action","../../region/update.do")
+						$("#ff").attr("action","/declaration/region/update.do")
 						console.log($("#ff").attr("action"))
 					})
 					$("#btn_delete").click(function(){
 						$("input[type=text]").textbox({
 							"readonly":true
 						});
-						$("#ff").attr("action","../../region/delete.do")
+						$("#ff").attr("action","/declaration/region/delete.do")
 					})
 					</script>
 

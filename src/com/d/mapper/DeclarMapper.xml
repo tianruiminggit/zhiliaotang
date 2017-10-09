@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.d.dao.DeclarDao"><!-- 后面接的是接口名称 -->
+    <insert id="insertDeclar" parameterType="com.d.entity.Declar">
+        insert into tb_declar (declar_id, declar_province, declar_city, declar_county, project_name, project_filenum, declar_lawer, technology, 
+		buzhuzj, othermoney, zichouzj, tuijianfile,child_id, 
+		declar_context) VALUES (#{declar_id},#{declar_province},#{declar_city},#{declar_county},#{project_name},#{project_filenum},
+		#{declar_lawer},#{technology},#{buzhuzj},#{othermoney},#{zichouzj},#{tuijianfile},#{child_id},#{declar_context})
+    </insert>
+    
+    <select id="findDeclar" parameterType="java.util.Map" resultType="com.d.entity.Declar">
+        select * from tb_declar where 1=1
+        <if test="level =='sheng'.toString() ">
+            and declar_province = #{region}
+        </if>
+        <if test="level =='shi'.toString() ">
+            and declar_city = #{region}
+        </if>
+        <if test="level =='xian'.toString() ">
+            and declar_county = #{region}
+        </if>
+    </select>
+    
+    <select id="findNode" parameterType="java.util.Map" resultType="com.d.entity.DeclarNode">
+        <if test=" name == null ">
+        	select kind_id as id,kind_name as name from tb_projectkind
+        </if>
+        <if test=" name == 'child'.toString() ">
+            select child_id as id,child_name as name from tb_kindchild where kind_id = #{id}
+        </if>
+        <if test=" name == 'declar'.toString() ">
+            select declar_id as id, project_name as name,declar_context as context,buzhuzj as money,declar_time as time from tb_declar where child_id = #{id}
+        </if>
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

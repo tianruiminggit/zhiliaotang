@@ -5,17 +5,17 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/themes/icon.css">
-		<link rel="stylesheet" type="text/css" href="../../jquery-easyui-1.5.3/demo/demo.css">
-		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
-		<script type="text/javascript" src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/declaration/jquery-easyui-1.5.3/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="/declaration/jquery-easyui-1.5.3/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="/declaration/jquery-easyui-1.5.3/demo/demo.css">
+		<script type="text/javascript" src="/declaration/jquery-easyui-1.5.3/jquery.min.js"></script>
+		<script type="text/javascript" src="/declaration/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 		<title></title>
 	</head>
 
 	<body>
 		<table id="tb" title="申报汇总表" class="easyui-treegrid" style="width:100;height:250px" data-options="
-				url: 'treegrid_data1.json',
+				url: '/declaration/declar/node.do',
 				method: 'get',
 				rownumbers: true,
 				idField: 'id',
@@ -24,7 +24,8 @@
 			<thead>
 				<tr>
 					<th data-options="field:'name'" width="300">项目名称</th>
-					<th data-options="field:'size'" width="300" align="right">补助资金</th>
+					<th data-options="field:'context'" width="300" align="right">项目概要</th>
+					<th data-options="field:'money'" width="300" align="right">补助资金</th>
 					<th data-options="field:'date'" width="300">时间</th>
 				</tr>
 			</thead>

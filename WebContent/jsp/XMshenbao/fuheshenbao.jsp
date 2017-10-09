@@ -7,15 +7,15 @@
 <meta charset="UTF-8">
 <title>Basic Layout - jQuery EasyUI Demo</title>
 <link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/themes/default/easyui.css">
+	href="/declaration/jquery-easyui-1.5.3/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/themes/icon.css">
+	href="/declaration/jquery-easyui-1.5.3/themes/icon.css">
 <link rel="stylesheet" type="text/css"
-	href="../../jquery-easyui-1.5.3/demo/demo.css">
+	href="/declaration/jquery-easyui-1.5.3/demo/demo.css">
 <script type="text/javascript"
-	src="../../jquery-easyui-1.5.3/jquery.min.js"></script>
+	src="/declaration/jquery-easyui-1.5.3/jquery.min.js"></script>
 <script type="text/javascript"
-	src="../../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	src="/declaration/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 </head>
 
 <body>
@@ -34,13 +34,13 @@
 		</div>
 		<div data-options="region:'center'">
 			<table id="tb" class="easyui-datagrid"
-				data-options="url:'testjson.json',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true,pagination:true">
+				data-options="url:'/declaration/declar/find.do',method:'get',border:false,singleSelect:true,fit:true,fitColumns:true,pagination:true">
 				<thead>
 					<tr>
-						<th data-options="field:'id'" hidden="true"></th>
-						<th data-options="field:'region'" width="10%">地区</th>
-						<th data-options="field:'单位名称'" width="10%">单位名称</th>
-						<th data-options="field:'project_name',align:'right'" width="30%">项目名称</th>
+						<th data-options="field:'declar_id'" hidden="true"></th>
+						<th data-options="field:'declar_province'" width="10%">地区</th>
+						<th data-options="field:'project_filenum'" width="20%">项目文件号</th>
+						<th data-options="field:'project_name',align:'right'" width="20%">项目名称</th>
 						<th data-options="field:'buzhuzj',align:'right'" width="10%">补助资金</th>
 						<th data-options="field:'状态'" width="10%">状态</th>
 						<th data-options="field:'操作',align:'center'" width="30%">操作</th>
@@ -88,35 +88,35 @@
 						</tr>
 						<tr>
 							<td>项目名称:</td>
-							<td><input class="easyui-textbox" type="text" name="project_name" data-options=""></input>
+							<td><input id="project_name" class="easyui-textbox" type="text" name="project_name" data-options=""></input>
 							</td>
 						</tr>
 						<tr>
 							<td>项目申报文件号:</td>
-							<td><input class="easyui-textbox" type="text" name="project_filenum" data-options=""></input>
+							<td><input id="project_filenum" class="easyui-textbox" type="text" name="project_filenum" data-options=""></input>
 							</td>
 						</tr>
 						<tr>
 							<td>单位法人:</td>
-							<td><input class="easyui-textbox" type="text" name="declar_lawer" data-options=""></input>
+							<td><input id="declar_lawer" class="easyui-textbox" type="text" name="declar_lawer" data-options=""></input>
 							</td>
 						</tr>
 						<tr>
 							<td>技术负责人:</td>
-							<td><input class="easyui-textbox" type="text" name="technology" data-options=""></input>
+							<td><input id="technology" class="easyui-textbox" type="text" name="technology" data-options=""></input>
 							</td>
 						</tr>
 						<tr>
 							<td rowspan="4">预算:</td>
-							<td>补助资金：<input class="easyui-textbox" type="text" name="buzhuzj" data-options=""></input>
+							<td>补助资金：<input id="buzhuzj" class="easyui-textbox" type="text" name="buzhuzj" data-options=""></input>
 							</td>
 						</tr>
 						<tr>
-							<td>其他资金：<input class="easyui-textbox" type="text" name="othermoney" data-options=""></input>
+							<td>其他资金：<input id="othermoney" class="easyui-textbox" type="text" name="othermoney" data-options=""></input>
 							</td>
 						</tr>
 						<tr>
-							<td>自筹资金：<input class="easyui-textbox" type="text" name="zichouzj" data-options=""></input>
+							<td>自筹资金：<input id="zichouzj" class="easyui-textbox" type="text" name="zichouzj" data-options=""></input>
 							</td>
 						</tr>
 						<tr>
@@ -125,13 +125,13 @@
 						</tr>
 						<tr>
 							<td>推荐文件号:</td>
-							<td><input class="easyui-textbox" type="text" name="tuijianfile" data-options=""></input>
+							<td><input id="tuijianfile" class="easyui-textbox" type="text" name="tuijianfile" data-options=""></input>
 							</td>
 						</tr>
-						<!--<tr>
-	    			<td>Message:</td>
-	    			<td><input class="easyui-textbox" name="message" data-options="multiline:true" style="height:60px"></input></td>
-	    		</tr>-->
+						<tr>
+				    		<td>项目概述:</td>
+				    		<td><input id="declar_context" class="easyui-textbox" name="declar_context" data-options="multiline:true,required:true" style="height:60px"></input></td>
+	    				</tr>
 					</table>
 					<div style="text-align:center;padding:5px">
 						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>
@@ -147,6 +147,42 @@
 			$("#tb").datagrid({
 				onClickRow:function(index,row){
 					console.log(row)
+					$("#project_name").textbox({
+						"value":row.project_name,
+						"readonly":true
+					});
+					$("#project_filenum").textbox({
+						"value":row.project_filenum,
+						"readonly":true
+					});
+					$("#declar_lawer").textbox({
+						"value":row.declar_lawer,
+						"readonly":true
+					});
+					$("#technology").textbox({
+						"value":row.technology,
+						"readonly":true
+					});
+					$("#buzhuzj").textbox({
+						"value":row.buzhuzj,
+						"readonly":true
+					});
+					$("#zichouzj").textbox({
+						"value":row.zichouzj,
+						"readonly":true
+					});
+					$("#othermoney").textbox({
+						"value":row.othermoney,
+						"readonly":true
+					});
+					$("#tuijianfile").textbox({
+						"value":row.tuijianfile,
+						"readonly":true
+					});
+					$("#declar_context").textbox({
+						"value":row.declar_context,
+						"readonly":true
+					});
 					$("#kuang").dialog("open")
 				}
 			})

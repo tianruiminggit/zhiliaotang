@@ -128,10 +128,10 @@
 							<td><input class="easyui-textbox" type="text" name="tuijianfile" data-options=""></input>
 							</td>
 						</tr>
-						<!--<tr>
-	    			<td>Message:</td>
-	    			<td><input class="easyui-textbox" name="message" data-options="multiline:true" style="height:60px"></input></td>
-	    		</tr>-->
+						<tr>
+				    		<td>项目概述:</td>
+				    		<td><input class="easyui-textbox" name="message" data-options="multiline:true,required:true" style="height:60px"></input></td>
+	    				</tr>
 					</table>
 					<div style="text-align:center;padding:5px">
 						<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>

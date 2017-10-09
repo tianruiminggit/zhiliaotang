@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -59,6 +60,7 @@ public class RegionManagerController {
 	@ResponseBody
 	@RequestMapping("/getCity")
 	public List<City> getListCity(City c){
+		System.out.println(c.getProvince_id());
 		List<City> list = regionService.getListCity(c);
 		return list;
 		
@@ -71,6 +73,7 @@ public class RegionManagerController {
 	@RequestMapping("/getCounty")
 	@ResponseBody
 	public List<City> getCityByProvince(County c){
+		System.out.println(c.getCity_id());
 		List<City> list = regionService.getListCounty(c);
 		return list;
 	}
@@ -86,7 +89,9 @@ public class RegionManagerController {
 	 * @return
 	 */
 	@RequestMapping("/insertRegion")
+//	@RequestMapping(value="/insertRegion",method=RequestMethod.POST)
 	public String insertRegion(String table,String province_id,String province_name,String city_id,String city_name,String county_id,String county_name){
+//		System.out.println("cityName === " + city_name);
 		Map<String, Object> map = new HashMap<>();
 		map.put("tablename", table);
 		if(province_id==null||province_id==""){
